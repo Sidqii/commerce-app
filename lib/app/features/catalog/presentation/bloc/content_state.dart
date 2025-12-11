@@ -21,13 +21,17 @@ class CatalogLoadingState extends ContentState {
 
 class CatalogDataState extends ContentState {
   final List<ProductsEntity> catalog;
+  final List<CategoryEntity> category;
   final List<String> banners;
 
-
-  const CatalogDataState({required this.catalog, required this.banners});
+  const CatalogDataState({
+    required this.catalog,
+    required this.category,
+    required this.banners,
+  });
 
   @override
-  List<Object?> get props => [catalog, banners];
+  List<Object?> get props => [catalog, category, banners];
 }
 
 class CatalogEmptyState extends ContentState {

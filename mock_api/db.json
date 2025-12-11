@@ -1,20 +1,723 @@
 {
+  "products": [
+    {
+      "id": 101,
+      "name": "Drone Surveyor A1",
+      "slug": "drone-surveyor-a1",
+      "pricing": {
+        "price": 9200000,
+        "discount": 10,
+        "final_price": 8280000
+      },
+      "stock": 15,
+      "media": [
+        "https://impact-forensics.com/wp-content/uploads/2024/08/Gemini_Generated_Image_scanner-and-drone-2.jpg",
+        "https://images.ctfassets.net/et769tc4wc1v/56LIrPLwKUMNO8dHPIetW0/db7ee369a42015febcafc328a5288d72/Copy-of-In-Blog-Image-Template-2021-08-05T101155.099-1.png?w=1025&h=500&q=50&fm=png&bg=transparent"
+      ],
+      "category": {
+        "id": 1,
+        "name": "Drone"
+      },
+      "brand": {
+        "id": 1,
+        "name": "DJI"
+      },
+      "vendor": {
+        "id": 1,
+        "name": "PT AeroTech",
+        "rating": 4.7
+      },
+      "rating": 4.6,
+      "sold": 212,
+      "highlights": [
+        "Sensor lidar presisi tinggi",
+        "Durasi terbang 35 menit",
+        "Mode auto-return",
+        "Mapping real-time"
+      ],
+      "description": "Drone Surveyor A1 dirancang untuk pemetaan area konstruksi dengan sensor lidar presisi. Memberikan hasil mapping real-time dengan stabilitas tinggi.",
+      "specs": {
+        "camera": "4K HDR",
+        "flight_time": "35 menit",
+        "battery": "6000mAh",
+        "gps": "Advanced GPS+GLONASS",
+        "range": "5 KM"
+      },
+      "created_at": "2024-03-10",
+      "updated_at": "2024-03-10"
+    },
+    {
+      "id": 102,
+      "name": "Radio Tactical V55",
+      "slug": "radio-tactical-v55",
+      "pricing": {
+        "price": 1800000,
+        "discount": 0,
+        "final_price": 1800000
+      },
+      "stock": 40,
+      "media": [
+        "https://assets.isu.pub/document-structure/201013150642-b719f6d82e6bbe91aad0b2d199f7e9c1/v1/13cfa17414d6389c0d494632194a399b.jpg"
+      ],
+      "category": {
+        "id": 2,
+        "name": "Komunikasi"
+      },
+      "brand": {
+        "id": 3,
+        "name": "Motorola"
+      },
+      "vendor": {
+        "id": 3,
+        "name": "PT IndoCom",
+        "rating": 4.9
+      },
+      "rating": 4.8,
+      "sold": 350,
+      "highlights": [
+        "Tahan air IP68",
+        "Dual band UHF/VHF",
+        "Kejernihan suara premium",
+        "Ideal untuk tim lapangan"
+      ],
+      "description": "Radio Tactical V55 menghadirkan kualitas audio terbaik untuk operasi outdoor ekstrem. Tahan air dan memiliki daya pancar jarak jauh.",
+      "specs": {
+        "band": "UHF/VHF",
+        "waterproof": "IP68",
+        "battery": "2800mAh",
+        "range": "3 KM"
+      },
+      "created_at": "2024-02-18",
+      "updated_at": "2024-02-18"
+    },
+    {
+      "id": 103,
+      "name": "Laptop Rugged Titan R3",
+      "slug": "laptop-rugged-titan-r3",
+      "pricing": {
+        "price": 17500000,
+        "discount": 5,
+        "final_price": 16625000
+      },
+      "stock": 8,
+      "media": [
+        "https://cdn.mos.cms.futurecdn.net/6NCmnucCGMzCvhQpmRTJCR-1200-80.jpg",
+        "https://ruggedpcreview.com/images8/dell_5430_header_710_144.jpg"
+      ],
+      "category": {
+        "id": 3,
+        "name": "Elektronik"
+      },
+      "brand": {
+        "id": 4,
+        "name": "Panasonic Toughbook"
+      },
+      "vendor": {
+        "id": 4,
+        "name": "PT Computa",
+        "rating": 4.8
+      },
+      "rating": 4.9,
+      "sold": 62,
+      "highlights": [
+        "Sertifikasi MIL-STD-810H",
+        "Intel i7 Gen 12",
+        "SSD 1TB NVMe",
+        "Anti debu & anti guncangan"
+      ],
+      "description": "Laptop Rugged Titan R3 menawarkan daya tahan ekstrem dengan sertifikasi militer. Cocok untuk teknisi, pekerja konstruksi, dan lapangan.",
+      "specs": {
+        "cpu": "Intel Core i7 Gen 12",
+        "storage": "1TB SSD NVMe",
+        "display": "15.6 inch FHD",
+        "battery": "12 jam"
+      },
+      "created_at": "2024-03-01",
+      "updated_at": "2024-03-01"
+    },
+    {
+      "id": 104,
+      "name": "CCTV Sentinel Pro 8K",
+      "slug": "cctv-sentinel-pro-8k",
+      "pricing": {
+        "price": 3200000,
+        "discount": 0,
+        "final_price": 3200000
+      },
+      "stock": 25,
+      "media": [
+        "https://wallpapercave.com/wp/wp2444570.jpg",
+        "https://img.freepik.com/premium-photo/group-security-cameras-cctv-cameras_1036975-56672.jpg"
+      ],
+      "category": {
+        "id": 4,
+        "name": "CCTV"
+      },
+      "brand": {
+        "id": 5,
+        "name": "Hikvision"
+      },
+      "vendor": {
+        "id": 5,
+        "name": "PT VisionTech",
+        "rating": 4.7
+      },
+      "rating": 4.7,
+      "sold": 120,
+      "highlights": [
+        "Resolusi 8K Ultra HD",
+        "AI Motion Tracking",
+        "Night Vision IR++",
+        "Wide Angle 130°"
+      ],
+      "description": "CCTV Sentinel Pro 8K dirancang untuk area industri dengan AI Motion Tracking canggih dan kemampuan night vision jarak jauh.",
+      "specs": {
+        "resolution": "8K Ultra HD",
+        "night_vision": "IR++",
+        "lens": "130° Wide Angle",
+        "tracking": "AI Motion"
+      },
+      "created_at": "2024-02-28",
+      "updated_at": "2024-02-28"
+    },
+    {
+      "id": 105,
+      "name": "Wearable Smart Helmet XH2",
+      "slug": "wearable-smart-helmet-xh2",
+      "pricing": {
+        "price": 4500000,
+        "discount": 12,
+        "final_price": 3960000
+      },
+      "stock": 18,
+      "media": [
+        "https://ismarch.com/wp-content/uploads/2024/04/smart-helmet.pic_-600x800.jpg"
+      ],
+      "category": {
+        "id": 5,
+        "name": "Wearable"
+      },
+      "brand": {
+        "id": 6,
+        "name": "SafeTech"
+      },
+      "vendor": {
+        "id": 6,
+        "name": "PT GearLab",
+        "rating": 4.5
+      },
+      "rating": 4.4,
+      "sold": 88,
+      "highlights": [
+        "Sensor suhu & detak jantung",
+        "GPS otomatis",
+        "Proteksi benturan tinggi",
+        "HUD Transparan (Heads Up Display)"
+      ],
+      "description": "Smart Helmet XH2 adalah perangkat wearable untuk pekerja industri dengan sensor vital, GPS otomatis, dan HUD untuk navigasi real-time.",
+      "specs": {
+        "sensors": "Temp, Heart Rate",
+        "battery": "4800mAh",
+        "display": "HUD Transparan",
+        "weight": "820g"
+      },
+      "created_at": "2024-03-02",
+      "updated_at": "2024-03-02"
+    },
+    {
+      "id": 106,
+      "name": "Industrial Gas Sensor GX-900",
+      "slug": "industrial-gas-sensor-gx900",
+      "pricing": {
+        "price": 3200000,
+        "discount": 8,
+        "final_price": 2944000
+      },
+      "stock": 25,
+      "media": [
+        "https://www.rkiinstruments.com/app/uploads/2025/04/GX-9000-scaled.jpg"
+      ],
+      "category": {
+        "id": 6,
+        "name": "Sensor"
+      },
+      "brand": {
+        "id": 7,
+        "name": "GasPro"
+      },
+      "vendor": {
+        "id": 7,
+        "name": "PT SensorTech",
+        "rating": 4.8
+      },
+      "rating": 4.7,
+      "sold": 142,
+      "highlights": [
+        "Deteksi gas berbahaya otomatis",
+        "Alarm suara 95dB",
+        "Monitoring realtime via Bluetooth",
+        "Kalibrasi cepat"
+      ],
+      "description": "GX-900 adalah sensor gas industri dengan alarm otomatis dan monitoring realtime untuk keamanan area operasional.",
+      "specs": {
+        "gas_types": "CO2, NH3, CH4",
+        "battery": "3000mAh",
+        "range": "0–5000ppm",
+        "connectivity": "Bluetooth 5.0"
+      },
+      "created_at": "2024-03-15",
+      "updated_at": "2024-03-15"
+    },
+    {
+      "id": 107,
+      "name": "Safety Vest SmartGuard S2",
+      "slug": "safety-vest-smartguard-s2",
+      "pricing": {
+        "price": 850000,
+        "discount": 0,
+        "final_price": 850000
+      },
+      "stock": 60,
+      "media": [
+        "https://www.powerpak.net/media/wysiwyg/04_Survey-Vest.jpg"
+      ],
+      "category": {
+        "id": 7,
+        "name": "Security Gear"
+      },
+      "brand": {
+        "id": 8,
+        "name": "SafeWear"
+      },
+      "vendor": {
+        "id": 8,
+        "name": "PT ProtectiveGear",
+        "rating": 4.6
+      },
+      "rating": 4.5,
+      "sold": 380,
+      "highlights": [
+        "Reflektif 360°",
+        "Sensor suhu lingkungan",
+        "Ringan & breathable",
+        "Kantong utilitas multi fungsi"
+      ],
+      "description": "SmartGuard S2 adalah safety vest modern dengan fitur reflektif penuh dan sensor suhu untuk meningkatkan keamanan pekerja.",
+      "specs": {
+        "material": "Polyester reflektif",
+        "weight": "360g",
+        "sensor": "Ambient temperature sensor"
+      },
+      "created_at": "2024-03-12",
+      "updated_at": "2024-03-12"
+    },
+    {
+      "id": 108,
+      "name": "Industrial Router NetWave X5",
+      "slug": "industrial-router-netwave-x5",
+      "pricing": {
+        "price": 2100000,
+        "discount": 5,
+        "final_price": 1995000
+      },
+      "stock": 34,
+      "media": [
+        "https://www.cisco.com/content/dam/cisco-cdc/site/us/en/images/networking/ir1100-ir1835-758x484.png",
+        "https://tse3.mm.bing.net/th/id/OIP.k9GXsAnvkwLIHdKWmhx6nQHaHa?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3"
+      ],
+      "category": {
+        "id": 8,
+        "name": "Network Device"
+      },
+      "brand": {
+        "id": 9,
+        "name": "NetWave"
+      },
+      "vendor": {
+        "id": 9,
+        "name": "PT NetComm",
+        "rating": 4.7
+      },
+      "rating": 4.8,
+      "sold": 210,
+      "highlights": [
+        "Dual SIM failover",
+        "Kecepatan hingga 1Gbps",
+        "Tahan panas 70°C",
+        "Manajemen cloud"
+      ],
+      "description": "Router industri yang mendukung dual SIM untuk failover otomatis dan monitoring melalui cloud, cocok untuk area remote.",
+      "specs": {
+        "network": "4G LTE / Ethernet",
+        "speed": "1Gbps",
+        "operating_temp": "-20°C to 70°C",
+        "ports": "4x LAN, 1x WAN"
+      },
+      "created_at": "2024-03-14",
+      "updated_at": "2024-03-14"
+    },
+    {
+      "id": 109,
+      "name": "Power Drill HammerPro Z7",
+      "slug": "power-drill-hammerpro-z7",
+      "pricing": {
+        "price": 1450000,
+        "discount": 12,
+        "final_price": 1276000
+      },
+      "stock": 50,
+      "media": [
+        "https://cdn.pixabay.com/photo/2023/03/08/13/14/tools-7837749_1280.jpg",
+        "https://i5.walmartimages.com/asr/61b5b056-5001-4e6d-8c5d-d4a9af6691f5.3de110c3c4c4a5648c7890d0c8087ebd.jpeg"
+      ],
+      "category": {
+        "id": 9,
+        "name": "Industrial Tool"
+      },
+      "brand": {
+        "id": 10,
+        "name": "HammerPro"
+      },
+      "vendor": {
+        "id": 10,
+        "name": "PT ToolWorks",
+        "rating": 4.6
+      },
+      "rating": 4.7,
+      "sold": 190,
+      "highlights": [
+        "Mode hammer & drill",
+        "Motor brushless",
+        "Kapasitas baterai 5000mAh",
+        "Torsi hingga 70Nm"
+      ],
+      "description": "HammerPro Z7 adalah bor industri dengan motor brushless dan mode hammer, ideal untuk konstruksi dan perbaikan berat.",
+      "specs": {
+        "torque": "70Nm",
+        "battery": "5000mAh",
+        "speed_levels": "3 tingkat",
+        "weight": "1.9kg"
+      },
+      "created_at": "2024-03-11",
+      "updated_at": "2024-03-11"
+    },
+    {
+      "id": 110,
+      "name": "GPS Navigator TrekMate G100",
+      "slug": "gps-navigator-trekmate-g100",
+      "pricing": {
+        "price": 2800000,
+        "discount": 0,
+        "final_price": 2800000
+      },
+      "stock": 22,
+      "media": [
+        "https://as2.ftcdn.net/jpg/08/24/94/77/1000_F_824947702_wVWHDfnR4YmbPT0JUZNhRV7DcduzYz2Z.jpg"
+      ],
+      "category": {
+        "id": 10,
+        "name": "Navigation Device"
+      },
+      "brand": {
+        "id": 11,
+        "name": "TrekMate"
+      },
+      "vendor": {
+        "id": 11,
+        "name": "PT NavTech",
+        "rating": 4.8
+      },
+      "rating": 4.6,
+      "sold": 130,
+      "highlights": [
+        "Tracking offline",
+        "Peta topografi detail",
+        "Baterai tahan 20 jam",
+        "Akurasi tinggi"
+      ],
+      "description": "TrekMate G100 adalah GPS handheld yang cocok untuk petualangan outdoor dengan akurasi tinggi dan peta topografi bawaan.",
+      "specs": {
+        "battery": "20 jam",
+        "display": "3.5 inch",
+        "accuracy": "±1 meter",
+        "memory": "32GB"
+      },
+      "created_at": "2024-03-09",
+      "updated_at": "2024-03-09"
+    },
+    {
+      "id": 111,
+      "name": "Drone Inspection Vento S4",
+      "slug": "drone-inspection-vento-s4",
+      "pricing": {
+        "price": 6800000,
+        "discount": 5,
+        "final_price": 6460000
+      },
+      "stock": 14,
+      "media": [
+        "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f",
+        "https://images.unsplash.com/photo-1485988412941-77a35537dae4"
+      ],
+      "category": {
+        "id": 1,
+        "name": "Drone"
+      },
+      "brand": {
+        "id": 2,
+        "name": "Yuneec"
+      },
+      "vendor": {
+        "id": 2,
+        "name": "PT SkyLog",
+        "rating": 4.6
+      },
+      "rating": 4.5,
+      "sold": 175,
+      "highlights": [
+        "Sensor thermal untuk inspeksi pipa",
+        "Penerbangan stabil 32 menit",
+        "Transmission 2.4GHz anti-interference",
+        "Auto-hover high precision"
+      ],
+      "description": "Drone Vento S4 dirancang khusus untuk inspeksi industri, dilengkapi sensor thermal dan stabilitas penerbangan yang tinggi.",
+      "specs": {
+        "camera": "Thermal + 4K",
+        "flight_time": "32 menit",
+        "battery": "5400mAh",
+        "range": "4 KM"
+      },
+      "created_at": "2024-03-16",
+      "updated_at": "2024-03-16"
+    },
+    {
+      "id": 112,
+      "name": "Radio Emergency ComLink X22",
+      "slug": "radio-emergency-comlink-x22",
+      "pricing": {
+        "price": 1350000,
+        "discount": 0,
+        "final_price": 1350000
+      },
+      "stock": 48,
+      "media": [
+        "https://images.unsplash.com/photo-1542751371-adc38448a05e"
+      ],
+      "category": {
+        "id": 2,
+        "name": "Komunikasi"
+      },
+      "brand": {
+        "id": 3,
+        "name": "Motorola"
+      },
+      "vendor": {
+        "id": 3,
+        "name": "PT IndoCom",
+        "rating": 4.9
+      },
+      "rating": 4.7,
+      "sold": 290,
+      "highlights": [
+        "Mode darurat SOS otomatis",
+        "Kejernihan suara HD Audio",
+        "Daya tahan baterai 30 jam",
+        "Jangkauan 2.5KM"
+      ],
+      "description": "ComLink X22 adalah radio taktis dengan fitur SOS dan baterai tahan lama, ideal untuk tim rescue dan keamanan.",
+      "specs": {
+        "audio": "HD Voice",
+        "range": "2.5 KM",
+        "waterproof": "IP67",
+        "battery": "3000mAh"
+      },
+      "created_at": "2024-03-17",
+      "updated_at": "2024-03-17"
+    },
+    {
+      "id": 113,
+      "name": "Laptop Industrial EdgeBook M7",
+      "slug": "laptop-industrial-edgebook-m7",
+      "pricing": {
+        "price": 19800000,
+        "discount": 7,
+        "final_price": 18414000
+      },
+      "stock": 6,
+      "media": [
+        "https://images.unsplash.com/photo-1527443224154-d96f62de9b92",
+        "https://images.unsplash.com/photo-1527430253228-e93688616381"
+      ],
+      "category": {
+        "id": 3,
+        "name": "Elektronik"
+      },
+      "brand": {
+        "id": 4,
+        "name": "Panasonic Toughbook"
+      },
+      "vendor": {
+        "id": 4,
+        "name": "PT Computa",
+        "rating": 4.8
+      },
+      "rating": 4.9,
+      "sold": 44,
+      "highlights": [
+        "Prosesor Intel i9",
+        "Anti benturan MIL-STD-810H",
+        "Baterai 15 jam",
+        "Grafis RTX A1000"
+      ],
+      "description": "EdgeBook M7 adalah laptop industrial dengan spesifikasi tinggi untuk operasi berat seperti simulasi, pemodelan, dan engineering.",
+      "specs": {
+        "cpu": "Intel Core i9",
+        "gpu": "RTX A1000",
+        "storage": "1TB SSD",
+        "display": "17 inch FHD"
+      },
+      "created_at": "2024-03-18",
+      "updated_at": "2024-03-18"
+    },
+    {
+      "id": 114,
+      "name": "CCTV GuardVision X360",
+      "slug": "cctv-guardvision-x360",
+      "pricing": {
+        "price": 2650000,
+        "discount": 0,
+        "final_price": 2650000
+      },
+      "stock": 28,
+      "media": [
+        "https://images.unsplash.com/photo-1598511725417-c9d5bb5fe3e9"
+      ],
+      "category": {
+        "id": 4,
+        "name": "CCTV"
+      },
+      "brand": {
+        "id": 5,
+        "name": "Hikvision"
+      },
+      "vendor": {
+        "id": 5,
+        "name": "PT VisionTech",
+        "rating": 4.7
+      },
+      "rating": 4.6,
+      "sold": 156,
+      "highlights": [
+        "Panorama 360°",
+        "AI Face Recognition",
+        "Night Mode Ultra Bright",
+        "Auto Tracking Movement"
+      ],
+      "description": "GuardVision X360 menawarkan pengawasan 360° dengan AI Face Recognition, cocok untuk pusat perkantoran dan fasilitas industri.",
+      "specs": {
+        "resolution": "4K",
+        "lens": "Fisheye 360°",
+        "night_vision": "Ultra Bright",
+        "tracking": "AI Auto Tracking"
+      },
+      "created_at": "2024-03-19",
+      "updated_at": "2024-03-19"
+    },
+    {
+      "id": 115,
+      "name": "Wearable SmartGlove Tactile G2",
+      "slug": "wearable-smartglove-tactile-g2",
+      "pricing": {
+        "price": 2100000,
+        "discount": 10,
+        "final_price": 1890000
+      },
+      "stock": 32,
+      "media": [
+        "https://images.unsplash.com/photo-1603791452906-c2d462696f8e"
+      ],
+      "category": {
+        "id": 5,
+        "name": "Wearable"
+      },
+      "brand": {
+        "id": 6,
+        "name": "SafeTech"
+      },
+      "vendor": {
+        "id": 6,
+        "name": "PT GearLab",
+        "rating": 4.5
+      },
+      "rating": 4.6,
+      "sold": 112,
+      "highlights": [
+        "Sensor tekanan jari",
+        "Mode getar alert",
+        "Material anti panas 400°C",
+        "Battery 24 jam"
+      ],
+      "description": "SmartGlove G2 dirancang untuk teknisi dan operator industri, memberikan deteksi tekanan dan keamanan tambahan saat bekerja.",
+      "specs": {
+        "material": "Heat Resistant Fiber",
+        "battery": "24 jam",
+        "sensor": "Pressure & Vibration",
+        "weight": "210g"
+      },
+      "created_at": "2024-03-20",
+      "updated_at": "2024-03-20"
+    }
+  ],
   "categories": [
     {
-      "id": "1",
-      "name": "Drone"
+      "id": 1,
+      "name": "Drone",
+      "media": "https://images.unsplash.com/photo-1599417316047-7d975d2d5921?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     },
     {
-      "id": "2",
-      "name": "Komunikasi"
+      "id": 2,
+      "name": "Komunikasi",
+      "media": "https://images.unsplash.com/photo-1738012330292-b842945cee5f?q=80&w=686&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     },
     {
-      "id": "3",
-      "name": "Elektronik"
+      "id": 3,
+      "name": "Elektronik",
+      "media": "https://plus.unsplash.com/premium_photo-1673709635882-3bd099a72359?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     },
     {
-      "id": "4",
-      "name": "CCTV"
+      "id": 4,
+      "name": "CCTV",
+      "media": "https://images.unsplash.com/photo-1618482914248-29272d021005?q=80&w=686&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+      "id": 5,
+      "name": "Wearable",
+      "media": "https://images.unsplash.com/photo-1707166919487-a7d4439c9a89?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+      "id": 6,
+      "name": "Sensor",
+      "media": "https://plus.unsplash.com/premium_photo-1715786199714-ee877f537089?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+      "id": 7,
+      "name": "Security Gear",
+      "media": "https://images.unsplash.com/photo-1681334922324-28815917c7e9?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+      "id": 8,
+      "name": "Network Device",
+      "media": "https://images.unsplash.com/photo-1550591105-4e692a5c22bb?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+      "id": 9,
+      "name": "Industrial Tool",
+      "media": "https://plus.unsplash.com/premium_photo-1679860703742-fefbd20244fa?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+      "id": 10,
+      "name": "Navigation Device",
+      "media": "https://plus.unsplash.com/premium_photo-1661311950994-d263ea9681a1?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     }
   ],
   "brands": [
@@ -134,10 +837,10 @@
     }
   ],
   "banner": [
-    "https://img.freepik.com/premium-vector/indonesian-independence-day-discount-promo-poster_409025-133.jpg",
-    "https://img.freepik.com/premium-vector/banner-sale-independence-day-indonesia-celebration_526522-159.jpg?w=1380",
-    "https://img.freepik.com/premium-vector/up-50-off-banner_217752-218.jpg?w=2000",
-    "https://img.freepik.com/premium-psd/sale-discount-circle-label-up-50-percent-off_349825-94.jpg",
-    "https://img.freepik.com/premium-psd/psd-illustration-50-off_996261-26.jpg"
+    "https://images.unsplash.com/photo-1763633924253-3c92ce0ba7cf?q=80&w=1175&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "https://images.unsplash.com/photo-1605329628221-d8c9cf66cdc6?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "https://images.unsplash.com/photo-1651439372230-6a8f1c2aa597?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "https://images.unsplash.com/photo-1651362738094-92d70b08e380?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "https://images.unsplash.com/photo-1656417424143-e4f1d9a71ac6?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   ]
 }

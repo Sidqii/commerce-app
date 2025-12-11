@@ -116,7 +116,7 @@ class CardContentHandler extends StatelessWidget {
     return Center(
       child: Icon(
         Icons.image_not_supported_outlined,
-        color: Colors.white,
+        color: Colors.grey.shade400,
         size: 35,
       ),
     );

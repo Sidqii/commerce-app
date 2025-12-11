@@ -1,4 +1,6 @@
 import 'dart:convert';
+import 'package:suaka_niaga/app/utils/data/model/category_model.dart';
+
 import 'content_datasource.dart';
 import 'package:http/http.dart' as http;
 import 'package:suaka_niaga/app/utils/data/model/products_model.dart';
@@ -16,6 +18,15 @@ class ContentDatasourceImpl implements ContentDatasource {
     final data = jsonDecode(response.body) as List;
 
     return data.map((jsonData) => ProductsModel.fromJson(jsonData)).toList();
+  }
+
+  @override
+  Future<List<CategoryModel>> fetchCategoryDatasource() async {
+    final response = await client.get(Uri.parse('$base/categories'));
+
+    final data = jsonDecode(response.body) as List;
+
+    return data.map((jsonData) => CategoryModel.fromJson(jsonData)).toList();
   }
 
   @override

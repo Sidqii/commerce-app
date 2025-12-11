@@ -1,4 +1,5 @@
 import 'package:suaka_niaga/app/features/catalog/data/datasource/content_datasource.dart';
+import 'package:suaka_niaga/app/utils/data/entities/category_entity.dart';
 import 'package:suaka_niaga/app/utils/data/entities/products_entity.dart';
 import 'package:suaka_niaga/app/features/catalog/domain/repositories/content_repository.dart';
 
@@ -14,6 +15,15 @@ class ContentRepositoryImpl implements ContentRepository {
     final catalog = data.map((datasource) => datasource.toEntity()).toList();
 
     return catalog;
+  }
+
+  @override
+  Future<List<CategoryEntity>> fetchCategoryRepository() async {
+    final data = await datasource.fetchCategoryDatasource();
+
+    final category = data.map((datasource) => datasource.toEntity()).toList();
+
+    return category;
   }
 
   @override

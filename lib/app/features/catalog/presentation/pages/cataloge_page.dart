@@ -64,7 +64,14 @@ class _CatalogView extends StatelessWidget {
                     if (state is CatalogDataState) {
                       return CardScreenPage(
                         catalog: state.catalog,
+                        category: state.category,
                         banners: state.banners,
+                      );
+                    }
+
+                    if (state is CatalogErrorState) {
+                      return Center(
+                        child: Text(state.message),
                       );
                     }
 

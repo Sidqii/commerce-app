@@ -4,6 +4,7 @@ import 'package:suaka_niaga/app/features/catalog/data/datasource/content_datasou
 import 'package:suaka_niaga/app/features/catalog/data/repositories/content_repository_impl.dart';
 import 'package:suaka_niaga/app/features/catalog/domain/repositories/content_repository.dart';
 import 'package:suaka_niaga/app/features/catalog/domain/usecases/fetch_banner_usecase.dart';
+import 'package:suaka_niaga/app/features/catalog/domain/usecases/fetch_category_usecase.dart';
 import 'package:suaka_niaga/app/features/catalog/domain/usecases/fetch_content_usecase.dart';
 import 'package:suaka_niaga/app/features/catalog/presentation/bloc/content_bloc.dart';
 import 'package:suaka_niaga/app/utils/config/environment.dart';
@@ -23,11 +24,13 @@ extension CatalogDependency on GetIt {
     // REGISTER REPOSSITORY
     registerLazySingleton(() => FetchCatalogUsecase(this()));
     registerLazySingleton(() => FetchBannerUsecase(this()));
+    registerLazySingleton(() => FetchCategoryUsecase(this()));
 
     // REGISTER BLoC
     registerFactory(() {
       return ContentBloc(
         usecasesFetchCatalog: this(),
+        usecaseFetchCategory: this(),
         usecasesFetchBanner: this(),
       );
     });

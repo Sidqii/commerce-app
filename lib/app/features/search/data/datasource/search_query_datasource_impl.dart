@@ -1,6 +1,6 @@
 import 'dart:convert';
-
 import 'package:http/http.dart' as http;
+
 import 'package:suaka_niaga/app/utils/data/model/products_model.dart';
 import 'package:suaka_niaga/app/features/search/data/datasource/search_query_datasource.dart';
 
@@ -11,8 +11,12 @@ class SearchQueryDatasourceImpl implements SearchQueryDatasource {
   const SearchQueryDatasourceImpl(this.client, this.baseUrl);
 
   @override
-  Future<List<ProductsModel>> searchQueryDatasource(String? keyword) async {
-    final url = Uri.parse('$baseUrl/products?q=$keyword');
+  Future<List<ProductsModel>> searchQueryDatasource(String keyword) async {
+    final normalize = keyword.trim();
+
+    if (normalize.isEmpty) return [];
+
+    final url = Uri.parse('$baseUrl/products?q=$normalize');
 
     final response = await client.get(url);
 

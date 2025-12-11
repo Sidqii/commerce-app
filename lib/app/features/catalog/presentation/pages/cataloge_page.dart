@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:suaka_niaga/app/features/catalog/presentation/pages/search_suggeston_page.dart';
-
 import 'package:suaka_niaga/injection/app_root_dependency.dart';
 
 import 'package:suaka_niaga/app/features/catalog/presentation/widgets/card_screen_page.dart';
@@ -31,16 +29,7 @@ class _CatalogView extends StatelessWidget {
         child: Column(
           children: [
             //search bar
-            SearchAppBar(
-              onFocus: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const SearchSuggestonPage(),
-                  ),
-                );
-              },
-            ),
+            SearchAppBar(onFocus: () {}),
 
             //main content
             Expanded(
@@ -52,12 +41,12 @@ class _CatalogView extends StatelessWidget {
                   builder: (context, state) {
                     if (state is CatalogLoadingState) {
                       return const Center(
+                        //TODO: LOADING PAKAI SHIMMER
                         child: CircularProgressIndicator(strokeWidth: 1),
                       );
                     }
 
                     if (state is CatalogEmptyState) {
-                      //TODO: implement loading page
                       return const Center(child: Text('Tidak ada data'));
                     }
 
@@ -70,9 +59,7 @@ class _CatalogView extends StatelessWidget {
                     }
 
                     if (state is CatalogErrorState) {
-                      return Center(
-                        child: Text(state.message),
-                      );
+                      return Center(child: Text(state.message));
                     }
 
                     return const Center(child: Text('404 error not found'));

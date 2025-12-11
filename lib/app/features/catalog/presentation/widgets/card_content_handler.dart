@@ -35,7 +35,7 @@ class CardContentHandler extends StatelessWidget {
             child: Stack(
               children: [
                 // CONTENT IMAGE
-                Positioned.fill(child: _buildImage()),
+                Positioned.fill(child: ImageContentHandler(imageUrl: imageUrl)),
 
                 // GRADIENT CONTENT
                 Positioned.fill(
@@ -96,29 +96,29 @@ class CardContentHandler extends StatelessWidget {
     );
   }
 
-  Widget _buildImage() {
-    if (imageUrl.isEmpty) return _placeHolder();
+  // Widget _buildImage(String imageUrl) {
+  //   if (imageUrl.isEmpty) return _placeHolder();
 
-    return CachedNetworkImage(
-      fit: BoxFit.cover,
-      imageUrl: imageUrl,
-      fadeInDuration: const Duration(milliseconds: 200),
-      fadeOutDuration: Duration.zero,
-      errorWidget: (context, url, error) => _placeHolder(),
-      progressIndicatorBuilder: (context, url, progress) {
-        // TODO: LOADING PAKAI SHIMMER
-        return const Center(child: CircularProgressIndicator(strokeWidth: 1));
-      },
-    );
-  }
+  //   return CachedNetworkImage(
+  //     fit: BoxFit.cover,
+  //     imageUrl: imageUrl,
+  //     fadeInDuration: const Duration(milliseconds: 200),
+  //     fadeOutDuration: Duration.zero,
+  //     errorWidget: (context, url, error) => _placeHolder(),
+  //     progressIndicatorBuilder: (context, url, progress) {
+  //       // TODO: LOADING PAKAI SHIMMER
+  //       return const Center(child: CircularProgressIndicator(strokeWidth: 1));
+  //     },
+  //   );
+  // }
 
-  Widget _placeHolder() {
-    return Center(
-      child: Icon(
-        Icons.image_not_supported_outlined,
-        color: Colors.grey.shade400,
-        size: 35,
-      ),
-    );
-  }
+  // Widget _placeHolder() {
+  //   return Center(
+  //     child: Icon(
+  //       Icons.image_not_supported_outlined,
+  //       color: Colors.grey.shade400,
+  //       size: 35,
+  //     ),
+  //   );
+  // }
 }

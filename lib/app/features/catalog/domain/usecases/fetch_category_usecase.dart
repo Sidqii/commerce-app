@@ -4,7 +4,7 @@ import 'package:suaka_niaga/app/utils/data/entities/category_entity.dart';
 class FetchCategoryUsecase {
   final ContentRepository repository;
 
-  FetchCategoryUsecase(this.repository);
+  const FetchCategoryUsecase(this.repository);
 
   Future<List<CategoryEntity>> call() {
     return repository.fetchCategoryRepository();

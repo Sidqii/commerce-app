@@ -1,16 +1,18 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:suaka_niaga/app/features/catalog/presentation/widgets/image_content_handler.dart';
 
 class BannerCatalogWidget extends StatelessWidget {
   final List<String>? imageUrl;
   final String? titleBanner;
   final String? subtitleBanner;
+  final String? buttonTitle;
 
   const BannerCatalogWidget({
     super.key,
     required this.imageUrl,
     this.titleBanner,
     this.subtitleBanner,
+    this.buttonTitle,
   });
 
   @override
@@ -26,7 +28,7 @@ class BannerCatalogWidget extends StatelessWidget {
     if (imageUrl == null || imageUrl!.isEmpty) {
       return SizedBox(
         height: MediaQuery.of(context).size.height * 0.4,
-        child: _buildImage('>>(._.)<<'),
+        child: ImageContentHandler(imageUrl: '>>(._.)<<'),
       );
     }
 
@@ -42,7 +44,7 @@ class BannerCatalogWidget extends StatelessWidget {
               child: PageView.builder(
                 itemCount: imageUrl!.length,
                 itemBuilder: (context, index) {
-                  return _buildImage(imageUrl![index]);
+                  return ImageContentHandler(imageUrl: imageUrl![index]);
                 },
               ),
             ),
@@ -73,7 +75,7 @@ class BannerCatalogWidget extends StatelessWidget {
                   Text(
                     (titleBanner?.isNotEmpty ?? false)
                         ? titleBanner!
-                        : 'Ini merupakan title pada banner!',
+                        : 'Lihat promo menarik lainnya!',
                     style: title,
                   ),
 
@@ -82,7 +84,7 @@ class BannerCatalogWidget extends StatelessWidget {
                   Text(
                     (subtitleBanner?.isNotEmpty ?? false)
                         ? subtitleBanner!
-                        : 'Bagian ini subtitle pada banner',
+                        : 'Syarat dan ketentuan berlaku',
                     style: subtitle,
                   ),
 
@@ -94,41 +96,17 @@ class BannerCatalogWidget extends StatelessWidget {
                       foregroundColor: Colors.black,
                     ),
                     onPressed: () {},
-                    child: const Text('Lihat Promo'),
+                    child: Text(
+                      (buttonTitle?.isNotEmpty ?? false)
+                          ? buttonTitle!
+                          : 'Lihat Promo',
+                    ),
                   ),
                 ],
               ),
             ),
           ],
         ),
-      ),
-    );
-  }
-
-  Widget _buildImage(String imageUrl) {
-    if (imageUrl.isEmpty) return _placeHolder();
-
-    return CachedNetworkImage(
-      fit: BoxFit.cover,
-      imageUrl: imageUrl,
-      fadeInDuration: const Duration(milliseconds: 200),
-      fadeOutDuration: Duration.zero,
-      errorWidget: (context, url, error) {
-        return _placeHolder();
-      },
-      progressIndicatorBuilder: (context, url, progress) {
-        // TODO: LOADING PAKAI SHIMMER
-        return const Center(child: CircularProgressIndicator(strokeWidth: 1));
-      },
-    );
-  }
-
-  Widget _placeHolder() {
-    return const Center(
-      child: Icon(
-        Icons.image_not_supported_outlined,
-        color: Colors.red,
-        size: 100,
       ),
     );
   }

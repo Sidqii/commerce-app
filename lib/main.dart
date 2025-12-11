@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:suaka_niaga/app/utils/theme/no_glow_behavior.dart';
 
 import 'package:suaka_niaga/injection/app_root_dependency.dart';
 
@@ -17,6 +18,6 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(home: CatalogePage());
+    return MaterialApp(scrollBehavior: NoGlowBehavior(), home: CatalogePage());
   }
 }

@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 
-class SearchSuggestonPage extends StatefulWidget {
-  const SearchSuggestonPage({super.key});
+class SearchInitial extends StatefulWidget {
+  final String? initialKeyword;
+
+  const SearchInitial({super.key, required this.initialKeyword});
 
   @override
-  State<SearchSuggestonPage> createState() => _SearchSuggestonPageState();
+  State<SearchInitial> createState() => _SearchInitialState();
 }
 
-class _SearchSuggestonPageState extends State<SearchSuggestonPage> {
+class _SearchInitialState extends State<SearchInitial> {
+  late final TextEditingController _controller;
   final _focusNode = FocusNode();
 
   @override
@@ -15,6 +18,8 @@ class _SearchSuggestonPageState extends State<SearchSuggestonPage> {
     WidgetsBinding.instance.addPostFrameCallback(
       (timeStamp) => _focusNode.requestFocus(),
     );
+
+    _controller = TextEditingController(text: widget.initialKeyword ?? '');
 
     super.initState();
   }
@@ -28,6 +33,7 @@ class _SearchSuggestonPageState extends State<SearchSuggestonPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xfff5f5f5),
       body: SafeArea(
         child: GestureDetector(
           behavior: HitTestBehavior.translucent,
@@ -46,7 +52,9 @@ class _SearchSuggestonPageState extends State<SearchSuggestonPage> {
                     borderRadius: BorderRadius.circular(25),
                   ),
                   child: TextField(
+                    controller: _controller,
                     focusNode: _focusNode,
+                    onChanged: (value) {},
                     decoration: InputDecoration(
                       isDense: true,
                       hintText: 'Cari barang...',
@@ -58,6 +66,21 @@ class _SearchSuggestonPageState extends State<SearchSuggestonPage> {
                       ),
                     ),
                   ),
+                ),
+              ),
+
+              Expanded(
+                child: ListView(
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  children: [
+                    Text('Pencarian terakhir'),
+
+                    const SizedBox(height: 10),
+
+                    const ListTile(title: Text('Drone')),
+                    const ListTile(title: Text('Wearable')),
+                    const ListTile(title: Text('Kaos kaki')),
+                  ],
                 ),
               ),
             ],

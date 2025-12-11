@@ -1,4 +1,4 @@
-package com.example.suaka_niaga
+package com.suaka.niaga
 
 import io.flutter.embedding.android.FlutterActivity
 

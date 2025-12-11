@@ -1,0 +1,143 @@
+{
+  "categories": [
+    {
+      "id": "1",
+      "name": "Drone"
+    },
+    {
+      "id": "2",
+      "name": "Komunikasi"
+    },
+    {
+      "id": "3",
+      "name": "Elektronik"
+    },
+    {
+      "id": "4",
+      "name": "CCTV"
+    }
+  ],
+  "brands": [
+    {
+      "id": "1",
+      "name": "DJI"
+    },
+    {
+      "id": "2",
+      "name": "Yuneec"
+    },
+    {
+      "id": "3",
+      "name": "Motorola"
+    },
+    {
+      "id": "4",
+      "name": "Panasonic Toughbook"
+    },
+    {
+      "id": "5",
+      "name": "Hikvision"
+    }
+  ],
+  "vendors": [
+    {
+      "id": "1",
+      "name": "PT AeroTech"
+    },
+    {
+      "id": "2",
+      "name": "PT SkyLog"
+    },
+    {
+      "id": "3",
+      "name": "PT IndoCom"
+    },
+    {
+      "id": "4",
+      "name": "PT Computa"
+    },
+    {
+      "id": "5",
+      "name": "PT VisionTech"
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "name": "Admin Utama",
+      "role": "admin",
+      "email": "admin@suakaniaga.com"
+    },
+    {
+      "id": "2",
+      "name": "Budi",
+      "role": "customer",
+      "email": "budi@example.com"
+    },
+    {
+      "id": "3",
+      "name": "Sari",
+      "role": "customer",
+      "email": "sari@example.com"
+    }
+  ],
+  "carts": [
+    {
+      "id": "1",
+      "user_id": "2",
+      "items": [
+        {
+          "product_id": "1",
+          "qty": 1
+        },
+        {
+          "product_id": "3",
+          "qty": 2
+        }
+      ]
+    }
+  ],
+  "wishlists": [
+    {
+      "id": "1",
+      "user_id": "3",
+      "product_ids": [
+        "2",
+        "4"
+      ]
+    }
+  ],
+  "orders": [
+    {
+      "id": "1",
+      "user_id": "2",
+      "total": 12500000,
+      "status": "paid",
+      "created_at": "2024-02-10",
+      "updated_at": "2024-02-10"
+    }
+  ],
+  "order_items": [
+    {
+      "id": "1",
+      "order_id": "1",
+      "product_id": "1",
+      "qty": 1,
+      "price": 7500000
+    },
+    {
+      "id": "2",
+      "order_id": "1",
+      "product_id": "3",
+      "qty": 2,
+      "price": 2500000
+    }
+  ],
+  "banner": [
+    "https://img.freepik.com/premium-vector/indonesian-independence-day-discount-promo-poster_409025-133.jpg",
+    "https://img.freepik.com/premium-vector/banner-sale-independence-day-indonesia-celebration_526522-159.jpg?w=1380",
+    "https://img.freepik.com/premium-vector/up-50-off-banner_217752-218.jpg?w=2000",
+    "https://img.freepik.com/premium-psd/sale-discount-circle-label-up-50-percent-off_349825-94.jpg",
+    "https://img.freepik.com/premium-psd/psd-illustration-50-off_996261-26.jpg"
+  ]
+}

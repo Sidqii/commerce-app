@@ -21,7 +21,7 @@ extension CatalogDependency on GetIt {
       return ContentRepositoryImpl(this());
     });
 
-    // REGISTER REPOSSITORY
+    // REGISTER USECASE
     registerLazySingleton(() => FetchCatalogUsecase(this()));
     registerLazySingleton(() => FetchBannerUsecase(this()));
     registerLazySingleton(() => FetchCategoryUsecase(this()));

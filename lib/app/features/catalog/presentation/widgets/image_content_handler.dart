@@ -20,7 +20,7 @@ class ImageContentHandler extends StatelessWidget {
 
       errorWidget: (context, url, error) => _placeholder(),
       progressIndicatorBuilder: (context, url, progress) {
-        return const Center(child: CircularProgressIndicator(strokeWidth: 1));
+        return const Center(child: CircularProgressIndicator(strokeWidth: 1)); // TODO: IMPLEMENT SHIMMER LOADING
       },
     );
   }

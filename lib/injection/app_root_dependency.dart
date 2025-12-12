@@ -7,9 +7,10 @@ import 'package:suaka_niaga/injection/search_dependency.dart';
 final sl = GetIt.instance;
 
 Future<void> init() async {
+  // NETWORK ENV
   sl.registerNetwork();
 
+  // CATALOG DEPENDENCY
   sl.registerCatalog();
-
   sl.registerSearchKeyword();
 }

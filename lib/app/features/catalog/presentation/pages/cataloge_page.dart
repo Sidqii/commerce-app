@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:suaka_niaga/injection/app_root_dependency.dart';
 
 import 'package:suaka_niaga/app/features/catalog/presentation/widgets/card_screen_page.dart';
@@ -29,7 +30,14 @@ class _CatalogView extends StatelessWidget {
         child: Column(
           children: [
             //search bar
-            SearchAppBar(onFocus: () {}),
+            SearchAppBar(
+              onFocus: () {
+                context.pushNamed(
+                  'catalog_search',
+                  queryParameters: {'keyword': ''},
+                );
+              },
+            ),
 
             //main content
             Expanded(
@@ -41,8 +49,9 @@ class _CatalogView extends StatelessWidget {
                   builder: (context, state) {
                     if (state is CatalogLoadingState) {
                       return const Center(
-                        //TODO: LOADING PAKAI SHIMMER
-                        child: CircularProgressIndicator(strokeWidth: 1),
+                        child: CircularProgressIndicator(
+                          strokeWidth: 1,
+                        ), // TODO: IMPLEMENT SHIMMER LOADING
                       );
                     }
 

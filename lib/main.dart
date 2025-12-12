@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+
+import 'package:suaka_niaga/app/utils/router/app_router.dart';
+
 import 'package:suaka_niaga/app/utils/theme/no_glow_behavior.dart';
 
 import 'package:suaka_niaga/injection/app_root_dependency.dart';
-
-import 'package:suaka_niaga/app/features/catalog/presentation/pages/cataloge_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,6 +19,9 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(scrollBehavior: NoGlowBehavior(), home: CatalogePage());
+    return MaterialApp.router(
+      scrollBehavior: NoGlowBehavior(),
+      routerConfig: appRouter,
+    );
   }
 }

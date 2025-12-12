@@ -9,16 +9,20 @@ import 'package:suaka_niaga/app/utils/config/environment.dart';
 
 extension SearchDependency on GetIt {
   void registerSearchKeyword() {
+    // REGISTER DATASOURCE + URL
     registerLazySingleton<SearchQueryDatasource>(() {
       return SearchQueryDatasourceImpl(this(), Environment.current.url);
     });
 
+    // REGISTER REPOSITORY
     registerLazySingleton<SearchQueryRepository>(() {
       return SearchQueryRepositoryImpl(this());
     });
 
+    // REGISTER USECASE
     registerLazySingleton(() => SearchQueryUsecase(this()));
 
+    // REGISTER BLOC
     registerFactory(() {
       return SearchBloc(searchQueryUsecase: this());
     });

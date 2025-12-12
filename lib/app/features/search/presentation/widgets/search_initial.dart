@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:suaka_niaga/app/features/search/presentation/bloc/search_bloc.dart';
 
 class SearchInitial extends StatefulWidget {
   final String? initialKeyword;
@@ -54,7 +56,9 @@ class _SearchInitialState extends State<SearchInitial> {
                   child: TextField(
                     controller: _controller,
                     focusNode: _focusNode,
-                    onChanged: (value) {},
+                    onChanged: (value) {
+                      context.read<SearchBloc>().add(SearchKeywordEvent(value));
+                    },
                     decoration: InputDecoration(
                       isDense: true,
                       hintText: 'Cari barang...',
@@ -70,23 +74,56 @@ class _SearchInitialState extends State<SearchInitial> {
               ),
 
               Expanded(
-                child: ListView(
-                  padding: const EdgeInsets.symmetric(horizontal: 15),
-                  children: [
-                    Text('Pencarian terakhir'),
+                child: BlocBuilder<SearchBloc, SearchState>(
+                  builder: (context, state) {
+                    if (state is SearchKeywordState) {
+                      return _buildSuggestionSeacrh(state.keyword);
+                    }
 
-                    const SizedBox(height: 10),
-
-                    const ListTile(title: Text('Drone')),
-                    const ListTile(title: Text('Wearable')),
-                    const ListTile(title: Text('Kaos kaki')),
-                  ],
+                    return _buildSuggestionHistory();
+                  },
                 ),
               ),
             ],
           ),
         ),
       ),
+    );
+  }
+
+  Widget _buildSuggestionHistory() {
+    return ListView(
+      padding: const EdgeInsets.symmetric(horizontal: 15),
+      children: [
+        Text('Pencarian terakhir'),
+
+        const SizedBox(height: 10),
+
+        const ListTile(title: Text('Drone')),
+        const ListTile(title: Text('Wearable')),
+        const ListTile(title: Text('Kaos kaki')),
+      ],
+    );
+  }
+
+  Widget _buildSuggestionSeacrh(String keyword) {
+    if (keyword.isEmpty) {
+      return _buildSuggestionHistory();
+    }
+
+    return ListView(
+      padding: const EdgeInsets.symmetric(horizontal: 15),
+      children: [
+        Text('Cari $keyword'),
+
+        const SizedBox(height: 10),
+
+        ListTile(title: Text('$keyword official store')),
+
+        ListTile(title: Text('$keyword murah')),
+
+        ListTile(title: Text('$keyword popular')),
+      ],
     );
   }
 }

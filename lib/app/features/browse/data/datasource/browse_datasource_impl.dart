@@ -32,9 +32,11 @@ class BrowseDatasourceImpl implements BrowseDatasource {
     if (sorting != null) {
       query['_sort'] = sorting;
     }
+
     if (maximal != null) {
       query['price_lte'] = maximal.toString();
     }
+
     if (minimal != null) {
       query['price_gte'] = minimal.toString();
     }

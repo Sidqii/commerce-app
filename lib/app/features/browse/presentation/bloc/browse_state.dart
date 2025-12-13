@@ -1,5 +1,4 @@
-import 'package:equatable/equatable.dart';
-import 'package:suaka_niaga/app/utils/data/entities/products_entity.dart';
+part of 'browse_bloc.dart';
 
 sealed class BrowseState extends Equatable {
   const BrowseState();

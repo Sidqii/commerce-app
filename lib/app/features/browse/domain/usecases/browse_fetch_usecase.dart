@@ -6,7 +6,14 @@ class BrowseFetchUsecase {
 
   const BrowseFetchUsecase(this.repository);
 
-  Future<List<ProductsEntity>> call() {
+  Future<List<ProductsEntity>> call({
+    String? keyword,
+    String? category,
+    String? sorting,
+    int? minimal,
+    int? maximal,
+    int? page,
+  }) {
     return repository.fetchBrowseRepository();
   }
 }

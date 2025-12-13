@@ -8,7 +8,7 @@ import 'package:suaka_niaga/app/features/search/presentation/bloc/search_bloc.da
 import 'package:suaka_niaga/app/utils/config/environment.dart';
 
 extension SearchDependency on GetIt {
-  void registerSearchKeyword() {
+  void registerSearch() {
     // REGISTER DATASOURCE + URL
     registerLazySingleton<SearchQueryDatasource>(() {
       return SearchQueryDatasourceImpl(this(), Environment.current.url);

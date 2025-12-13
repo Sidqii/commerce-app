@@ -4,10 +4,10 @@ import 'package:suaka_niaga/app/features/search/presentation/bloc/search_bloc.da
 import 'package:suaka_niaga/app/features/search/presentation/widgets/search_initial.dart';
 import 'package:suaka_niaga/injection/app_root_dependency.dart';
 
-class SearchSuggestionPage extends StatelessWidget {
+class AppSeacrhInitial extends StatelessWidget {
   final String initialKeyword;
 
-  const SearchSuggestionPage({super.key, required this.initialKeyword});
+  const AppSeacrhInitial({super.key, required this.initialKeyword});
 
   @override
   Widget build(BuildContext context) {

@@ -1,15 +1,33 @@
-import 'package:equatable/equatable.dart';
-import 'package:suaka_niaga/app/utils/data/entities/products_entity.dart';
+part of 'browse_bloc.dart';
 
 sealed class BrowseEvent extends Equatable {
   const BrowseEvent();
 }
 
 class BrowseFetchEvent extends BrowseEvent {
-  final ProductsEntity entity;
+  final String? keyword;
+  final String? category;
+  final String? sorting;
+  final int? maximal;
+  final int? minimal;
+  final int page;
 
-  const BrowseFetchEvent(this.entity);
+  const BrowseFetchEvent({
+    this.keyword,
+    this.category,
+    this.sorting,
+    this.maximal,
+    this.minimal,
+    this.page = 1,
+  });
 
   @override
-  List<Object?> get props => [entity];
+  List<Object?> get props => [
+    keyword,
+    category,
+    sorting,
+    maximal,
+    minimal,
+    page,
+  ];
 }

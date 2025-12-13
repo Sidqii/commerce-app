@@ -1,4 +1,5 @@
 import 'package:get_it/get_it.dart';
+import 'package:suaka_niaga/injection/browse_dependency.dart';
 
 import 'package:suaka_niaga/injection/network_dependency.dart';
 import 'package:suaka_niaga/injection/catalog_dependency.dart';
@@ -12,5 +13,6 @@ Future<void> init() async {
 
   // CATALOG DEPENDENCY
   sl.registerCatalog();
-  sl.registerSearchKeyword();
+  sl.registerSearch();
+  sl.registerBrowse();
 }

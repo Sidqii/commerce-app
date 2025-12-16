@@ -10,7 +10,7 @@ class BrowseContentGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
-      padding: const EdgeInsets.symmetric(horizontal: 5),
+      padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
       gridDelegate: AppGridDelegate.catalogGrid,
       itemCount: product.length,
       itemBuilder: (context, index) {
@@ -29,11 +29,17 @@ class BrowseContentGrid extends StatelessWidget {
 
               const SizedBox(height: 8),
 
-              Text(item.name),
+              Text(item.name, overflow: TextOverflow.ellipsis),
 
               const SizedBox(height: 4),
 
-              Text(item.price.toString()),
+              Text(
+                item.price.toString(),
+                style: const TextStyle(
+                  fontSize: 12,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
             ],
           ),
         );

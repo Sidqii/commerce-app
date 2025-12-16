@@ -12,8 +12,15 @@ class BrowseFetchUsecase {
     String? sorting,
     int? minimal,
     int? maximal,
-    int? page,
+    int page = 1,
   }) {
-    return repository.fetchBrowseRepository();
+    return repository.fetchBrowseRepository(
+      keyword: keyword,
+      category: category,
+      sorting: sorting,
+      minimal: minimal,
+      maximal: maximal,
+      page: page,
+    );
   }
 }

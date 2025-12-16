@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class SearchAppBar extends StatelessWidget {
+class SearchInitialBar extends StatelessWidget {
   final VoidCallback onFocus;
 
-  const SearchAppBar({super.key, required this.onFocus});
+  const SearchInitialBar({super.key, required this.onFocus});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class SearchAppBar extends StatelessWidget {
           onTap: onFocus,
           decoration: InputDecoration(
             isDense: true,
-            hintText: 'Cari barang...',
+            hintText: 'Cari produk...',
             prefixIcon: const Icon(Icons.search),
             border: InputBorder.none,
             contentPadding: const EdgeInsets.symmetric(

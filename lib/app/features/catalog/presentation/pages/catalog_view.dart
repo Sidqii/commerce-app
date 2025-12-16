@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import 'package:suaka_niaga/app/features/catalog/presentation/bloc/content_bloc.dart';
 import 'package:suaka_niaga/app/features/catalog/presentation/widgets/card_screen_page.dart';
-import 'package:suaka_niaga/app/features/catalog/presentation/widgets/search_app_bar.dart';
+import 'package:suaka_niaga/app/features/catalog/presentation/widgets/search_initial_bar.dart';
 
 class CatalogView extends StatelessWidget {
   const CatalogView({super.key});
@@ -17,7 +17,7 @@ class CatalogView extends StatelessWidget {
         child: Column(
           children: [
             // SEARCH BAR
-            SearchAppBar(
+            SearchInitialBar(
               onFocus: () {
                 context.pushNamed(
                   'catalog_search',

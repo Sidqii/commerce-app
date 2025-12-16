@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:suaka_niaga/app/features/browse/presentation/bloc/browse_bloc.dart';
+import 'package:suaka_niaga/app/features/browse/presentation/pages/browse_view.dart';
 import 'package:suaka_niaga/injection/app_root_dependency.dart';
 
 class AppBrowseInitial extends StatelessWidget {
@@ -25,9 +26,9 @@ class AppBrowseInitial extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) {
-        return sl<BrowseBloc>()..add(BrowseFetchEvent());
+        return sl<BrowseBloc>()..add(BrowseFetchEvent(keyword: keyword));
       },
-      child: Container(),
+      child: BrowseView(),
     );
   }
 }

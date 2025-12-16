@@ -16,7 +16,14 @@ class BrowseRepositoryImpl implements BrowseRepository {
     int? maximal,
     int page = 1,
   }) async {
-    final result = await datasource.fetchBrowseDatsource();
+    final result = await datasource.fetchBrowseDatsource(
+      keyword: keyword,
+      category: category,
+      sorting: sorting,
+      minimal: minimal,
+      maximal: maximal,
+      page: page,
+    );
 
     final data = result.map((model) => model.toEntity()).toList();
 

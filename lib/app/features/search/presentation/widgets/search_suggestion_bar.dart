@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:suaka_niaga/app/features/search/presentation/bloc/search_bloc.dart';
+import 'package:suaka_niaga/app/features/search/presentation/widgets/widget_keyword.dart';
+import 'package:suaka_niaga/app/features/search/presentation/widgets/widget_suggestion.dart';
 
-class SearchInitial extends StatefulWidget {
+class SearchSuggestionBar extends StatefulWidget {
   final String? initialKeyword;
 
-  const SearchInitial({super.key, required this.initialKeyword});
+  const SearchSuggestionBar({super.key, required this.initialKeyword});
 
   @override
-  State<SearchInitial> createState() => _SearchInitialState();
+  State<SearchSuggestionBar> createState() => _SearchSuggestionBarState();
 }
 
-class _SearchInitialState extends State<SearchInitial> {
+class _SearchSuggestionBarState extends State<SearchSuggestionBar> {
   late final TextEditingController _controller;
   final _focusNode = FocusNode();
 
@@ -28,6 +31,7 @@ class _SearchInitialState extends State<SearchInitial> {
 
   @override
   void dispose() {
+    _controller.dispose();
     _focusNode.dispose();
     super.dispose();
   }
@@ -61,7 +65,7 @@ class _SearchInitialState extends State<SearchInitial> {
                     },
                     decoration: InputDecoration(
                       isDense: true,
-                      hintText: 'Cari barang...',
+                      hintText: 'Cari produk...',
                       prefixIcon: const Icon(Icons.search),
                       border: InputBorder.none,
                       contentPadding: const EdgeInsets.symmetric(
@@ -69,6 +73,16 @@ class _SearchInitialState extends State<SearchInitial> {
                         vertical: 14,
                       ),
                     ),
+                    onSubmitted: (value) {
+                      final keyword = value.trim();
+
+                      if (keyword.isEmpty) return;
+
+                      context.pushNamed(
+                        'browse_result',
+                        queryParameters: {'keyword': keyword},
+                      );
+                    },
                   ),
                 ),
               ),
@@ -77,10 +91,10 @@ class _SearchInitialState extends State<SearchInitial> {
                 child: BlocBuilder<SearchBloc, SearchState>(
                   builder: (context, state) {
                     if (state is SearchKeywordState) {
-                      return _buildSuggestionSeacrh(state.keyword);
+                      return WidgetKeyword(keyword: state.keyword);
                     }
 
-                    return _buildSuggestionHistory();
+                    return WidgetSuggestion();
                   },
                 ),
               ),
@@ -88,42 +102,6 @@ class _SearchInitialState extends State<SearchInitial> {
           ),
         ),
       ),
-    );
-  }
-
-  Widget _buildSuggestionHistory() {
-    return ListView(
-      padding: const EdgeInsets.symmetric(horizontal: 15),
-      children: [
-        Text('Pencarian terakhir'),
-
-        const SizedBox(height: 10),
-
-        const ListTile(title: Text('Drone')),
-        const ListTile(title: Text('Wearable')),
-        const ListTile(title: Text('Kaos kaki')),
-      ],
-    );
-  }
-
-  Widget _buildSuggestionSeacrh(String keyword) {
-    if (keyword.isEmpty) {
-      return _buildSuggestionHistory();
-    }
-
-    return ListView(
-      padding: const EdgeInsets.symmetric(horizontal: 15),
-      children: [
-        Text('Cari $keyword'),
-
-        const SizedBox(height: 10),
-
-        ListTile(title: Text('$keyword official store')),
-
-        ListTile(title: Text('$keyword murah')),
-
-        ListTile(title: Text('$keyword popular')),
-      ],
     );
   }
 }

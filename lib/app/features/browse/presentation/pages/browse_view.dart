@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:suaka_niaga/app/features/browse/presentation/bloc/browse_bloc.dart';
 import 'package:suaka_niaga/app/features/browse/presentation/widgets/browse_content_grid.dart';
+import 'package:suaka_niaga/app/utils/widgets/linear_loading_indicator.dart';
 
 class BrowseView extends StatelessWidget {
   const BrowseView({super.key});
@@ -9,15 +10,11 @@ class BrowseView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xfff5f5f5), // TODO: IMPLEMENTASI DI THEME
       body: SafeArea(
-        
         child: BlocBuilder<BrowseBloc, BrowseState>(
           builder: (context, state) {
             if (state is BrowseLoadingState) {
-              return const Center(
-                child: CircularProgressIndicator(strokeWidth: 1),
-              );
+              return const LinearLoadingIndicator();
             }
 
             if (state is BrowseEmptyState) {

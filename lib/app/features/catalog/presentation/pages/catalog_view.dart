@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:suaka_niaga/app/features/catalog/presentation/bloc/content_bloc.dart';
 import 'package:suaka_niaga/app/features/catalog/presentation/widgets/card_screen_page.dart';
 import 'package:suaka_niaga/app/features/catalog/presentation/widgets/search_initial_bar.dart';
+import 'package:suaka_niaga/app/utils/widgets/linear_loading_indicator.dart';
 
 class CatalogView extends StatelessWidget {
   const CatalogView({super.key});
@@ -12,7 +13,6 @@ class CatalogView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xfff5f5f5), // TODO: IMPLEMENTASI DI THEME
       body: SafeArea(
         child: Column(
           children: [
@@ -35,11 +35,7 @@ class CatalogView extends StatelessWidget {
                 child: BlocBuilder<ContentBloc, ContentState>(
                   builder: (context, state) {
                     if (state is CatalogLoadingState) {
-                      return const Center(
-                        child: CircularProgressIndicator(
-                          strokeWidth: 1,
-                        ), // TODO: IMPLEMENT SHIMMER LOADING
-                      );
+                      return const LinearLoadingIndicator();
                     }
 
                     if (state is CatalogEmptyState) {

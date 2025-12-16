@@ -20,6 +20,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
+      theme: ThemeData(scaffoldBackgroundColor: const Color(0xfff5f5f5)),
       scrollBehavior: NoGlowBehavior(),
       routerConfig: appRouter,
     );

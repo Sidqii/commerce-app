@@ -65,7 +65,7 @@ class CardContentHandler extends StatelessWidget {
                         style: title,
                       ),
 
-                      Text(entity.brand, style: subtitle),
+                      Text('${entity.soldOut} produk terjual', style: subtitle),
 
                       const SizedBox(height: 5),
 
@@ -82,7 +82,12 @@ class CardContentHandler extends StatelessWidget {
                           backgroundColor: Colors.white,
                           foregroundColor: Colors.black,
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          context.pushNamed(
+                            'browse_result',
+                            queryParameters: {'category': category},
+                          );
+                        },
                         child: const Text('Cek produk lainnya'),
                       ),
                     ],

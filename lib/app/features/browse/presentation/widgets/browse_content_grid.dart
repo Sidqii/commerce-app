@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:suaka_niaga/app/features/catalog/presentation/utils/app_grid_delegate.dart';
+import 'package:suaka_niaga/app/features/catalog/presentation/utils/compress_image_url.dart';
+import 'package:suaka_niaga/app/features/catalog/presentation/widgets/image_content_handler.dart';
 import 'package:suaka_niaga/app/utils/data/entities/products_entity.dart';
 
 class BrowseContentGrid extends StatelessWidget {
@@ -9,6 +11,18 @@ class BrowseContentGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final title = const TextStyle(
+      fontWeight: FontWeight.w600,
+      color: Colors.white,
+      fontSize: 20,
+    );
+
+    final subtitle = const TextStyle(
+      fontWeight: FontWeight.bold,
+      color: Colors.white,
+      fontSize: 12,
+    );
+
     return GridView.builder(
       padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
       gridDelegate: AppGridDelegate.catalogGrid,
@@ -16,28 +30,75 @@ class BrowseContentGrid extends StatelessWidget {
       itemBuilder: (context, index) {
         final item = product[index];
 
-        return Container(
-          padding: const EdgeInsets.symmetric(horizontal: 5),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+        return SizedBox(
+          height: 250,
+          child: Stack(
             children: [
-              Expanded(child: Container(color: Colors.grey.shade300)),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: Stack(
+                  children: [
+                    Positioned.fill(
+                      child: ImageContentHandler(
+                        imageUrl: compressImageUrl(item.media.first),
+                      ),
+                    ),
 
-              const SizedBox(height: 8),
+                    // GRADIENT CONTENT
+                    Positioned.fill(
+                      child: IgnorePointer(
+                        child: Container(
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                              colors: [Colors.transparent, Colors.black],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
 
-              Text(item.name, overflow: TextOverflow.ellipsis),
+                    // TEXT + BUTTON
+                    Positioned(
+                      bottom: 10,
+                      left: 10,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width * 0.43,
+                            child: Text(
+                              item.name,
+                              overflow: TextOverflow.ellipsis,
+                              style: title,
+                            ),
+                          ),
 
-              const SizedBox(height: 4),
+                          Text(item.brand, style: subtitle),
 
-              Text(
-                item.price.toString(),
-                style: const TextStyle(
-                  fontSize: 12,
-                  fontWeight: FontWeight.w600,
+                          const SizedBox(height: 5),
+
+                          ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              visualDensity: VisualDensity.compact,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30),
+                              ),
+                              padding: EdgeInsets.symmetric(
+                                horizontal: 15,
+                                vertical: 0,
+                              ),
+                              backgroundColor: Colors.white,
+                              foregroundColor: Colors.black,
+                            ),
+                            onPressed: () {},
+                            child: const Text('Selengkapnya'),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],

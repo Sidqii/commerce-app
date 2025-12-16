@@ -7,7 +7,6 @@ import 'package:suaka_niaga/app/utils/data/entities/products_entity.dart';
 part 'browse_event.dart';
 part 'browse_state.dart';
 
-
 class BrowseBloc extends Bloc<BrowseEvent, BrowseState> {
   final BrowseFetchUsecase onFetchUsecase;
 

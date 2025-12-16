@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:http/http.dart' as http;
 import 'package:suaka_niaga/app/features/browse/data/datasource/browse_datasource.dart';
 import 'package:suaka_niaga/app/utils/data/model/products_model.dart';
@@ -25,8 +24,9 @@ class BrowseDatasourceImpl implements BrowseDatasource {
       query['q'] = keyword;
     }
 
-    if (category != null) {
-      query['category'] = category;
+    if (category != null && category.trim().isNotEmpty) {
+      query['category.name'] = category;
+
     }
 
     if (sorting != null) {

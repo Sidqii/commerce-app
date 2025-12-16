@@ -23,9 +23,10 @@ final catalogRoute = GoRoute(
       name: 'browse_result',
       builder: (context, state) {
         final keyword = state.uri.queryParameters['keyword'] ?? '';
+        final category = state.uri.queryParameters['category']??'';
         //TODO: IMPLEMENT ANOTHER FEATURES
 
-        return AppBrowseInitial(keyword: keyword);
+        return AppBrowseInitial(keyword: keyword, category: category);
         // TODO: CATCH FEATURES
       },
     ),

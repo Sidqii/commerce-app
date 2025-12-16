@@ -26,7 +26,9 @@ class AppBrowseInitial extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) {
-        return sl<BrowseBloc>()..add(BrowseFetchEvent(keyword: keyword));
+        return sl<BrowseBloc>()..add(
+          BrowseFetchEvent(keyword: keyword, category: category),
+        );
       },
       child: BrowseView(),
     );

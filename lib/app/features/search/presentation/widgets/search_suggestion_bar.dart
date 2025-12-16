@@ -65,6 +65,14 @@ class _SearchSuggestionBarState extends State<SearchSuggestionBar> {
                     },
                     decoration: InputDecoration(
                       isDense: true,
+                      suffixIcon: IconButton(
+                        onPressed: () {
+                          _controller.text.isEmpty
+                              ? context.pop()
+                              : _controller.clear();
+                        },
+                        icon: Icon(Icons.clear),
+                      ),
                       hintText: 'Cari produk...',
                       prefixIcon: const Icon(Icons.search),
                       border: InputBorder.none,

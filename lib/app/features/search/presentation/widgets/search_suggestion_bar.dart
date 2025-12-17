@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:suaka_niaga/app/features/search/presentation/bloc/search_bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:suaka_niaga/app/features/search/presentation/cubit/search_cubit.dart';
 import 'package:suaka_niaga/app/features/search/presentation/widgets/widget_keyword.dart';
 import 'package:suaka_niaga/app/features/search/presentation/widgets/widget_suggestion.dart';
 
@@ -61,15 +61,19 @@ class _SearchSuggestionBarState extends State<SearchSuggestionBar> {
                     controller: _controller,
                     focusNode: _focusNode,
                     onChanged: (value) {
-                      context.read<SearchBloc>().add(SearchKeywordEvent(value));
+                      // context.read<SearchBloc>().add(SearchKeywordEvent(value));
+                      context.read<SearchCubit>().setKeyword(value);
                     },
                     decoration: InputDecoration(
                       isDense: true,
                       suffixIcon: IconButton(
                         onPressed: () {
-                          _controller.text.isEmpty
-                              ? context.pop()
-                              : _controller.clear();
+                          if (_controller.text.isNotEmpty) {
+                            _controller.clear();
+                            context.read<SearchCubit>().clearKeyword();
+                          }
+
+                          context.pop();
                         },
                         icon: Icon(Icons.clear),
                       ),
@@ -96,9 +100,9 @@ class _SearchSuggestionBarState extends State<SearchSuggestionBar> {
               ),
 
               Expanded(
-                child: BlocBuilder<SearchBloc, SearchState>(
+                child: BlocBuilder<SearchCubit, SearchState>(
                   builder: (context, state) {
-                    if (state is SearchKeywordState) {
+                    if (state.keyword.isNotEmpty) {
                       return WidgetKeyword(keyword: state.keyword);
                     }
 

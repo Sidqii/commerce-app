@@ -668,6 +668,36 @@
       "updated_at": "2024-03-20"
     }
   ],
+  "search_suggestions": [
+    {
+      "id": 1,
+      "title": "drone murah",
+      "type": "keyword"
+    },
+    {
+      "id": 2,
+      "title": "Drone Surveyor A1",
+      "type": "product",
+      "ref_id": 101
+    },
+    {
+      "id": 3,
+      "title": "Drone DJI Mini 3",
+      "type": "product",
+      "ref_id": 102
+    },
+    {
+      "id": 4,
+      "title": "Drone FPV",
+      "type": "category",
+      "ref_id": 5
+    },
+    {
+      "id": 5,
+      "title": "drone profesional",
+      "type": "keyword"
+    }
+  ],
   "categories": [
     {
       "id": 1,

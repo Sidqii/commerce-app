@@ -1,10 +1,27 @@
 part of 'search_cubit.dart';
 
-class SearchState extends Equatable {
+enum SearchStatus { idle, loading, loaded, empty, error }
+
+class SearchState {
   final String keyword;
+  final SearchStatus status;
+  final List<AutocompleteEntity> autocomplete;
 
-  const SearchState({this.keyword = ''});
+  const SearchState({
+    this.keyword = '',
+    this.status = SearchStatus.idle,
+    this.autocomplete = const [],
+  });
 
-  @override
-  List<Object?> get props => [keyword];
+  SearchState copyWith({
+    String? keyword,
+    SearchStatus? status,
+    List<AutocompleteEntity>? autocomplete,
+  }) {
+    return SearchState(
+      keyword: keyword ?? this.keyword,
+      status: status ?? this.status,
+      autocomplete: autocomplete ?? this.autocomplete,
+    );
+  }
 }

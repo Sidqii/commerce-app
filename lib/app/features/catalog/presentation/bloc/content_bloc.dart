@@ -1,11 +1,11 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:suaka_niaga/app/features/catalog/domain/usecases/fetch_category_usecase.dart';
-import 'package:suaka_niaga/app/utils/data/entities/category_entity.dart';
 
+import 'package:suaka_niaga/app/utils/data/entities/category_entity.dart';
 import 'package:suaka_niaga/app/utils/data/entities/products_entity.dart';
+
+import 'package:suaka_niaga/app/features/catalog/domain/usecases/fetch_category_usecase.dart';
 import 'package:suaka_niaga/app/features/catalog/domain/usecases/fetch_banner_usecase.dart';
 import 'package:suaka_niaga/app/features/catalog/domain/usecases/fetch_content_usecase.dart';
 
@@ -53,7 +53,9 @@ class ContentBloc extends Bloc<ContentEvent, ContentState> {
         return;
       }
 
-      emit(CatalogDataState(catalog: catalog, banners: banner, category: category));
+      emit(
+        CatalogDataState(catalog: catalog, banners: banner, category: category),
+      );
     } catch (e) {
       emit(CatalogErrorState('Error: $e'));
     }

@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:suaka_niaga/app/features/catalog/presentation/bloc/content_bloc.dart';
-import 'package:suaka_niaga/app/features/catalog/presentation/widgets/card_screen_page.dart';
+import 'package:suaka_niaga/app/features/catalog/presentation/widgets/content_view_page.dart';
 import 'package:suaka_niaga/app/features/catalog/presentation/widgets/search_initial_bar.dart';
 import 'package:suaka_niaga/app/utils/widgets/linear_loading_indicator.dart';
 

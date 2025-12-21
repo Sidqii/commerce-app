@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:suaka_niaga/app/features/catalog/presentation/utils/app_grid_delegate.dart';
-import 'package:suaka_niaga/app/features/catalog/presentation/utils/compress_image_url.dart';
-import 'package:suaka_niaga/app/features/catalog/presentation/widgets/image_content_handler.dart';
 import 'package:suaka_niaga/app/utils/data/entities/products_entity.dart';
+import 'package:suaka_niaga/app/features/catalog/presentation/utils/app_grid_delegate.dart';
+import 'package:suaka_niaga/app/features/catalog/presentation/utils/image_content_handler.dart';
+import 'package:suaka_niaga/app/features/catalog/presentation/utils/image_content_compresser.dart';
 
 class BrowseContentGrid extends StatelessWidget {
   final List<ProductsEntity> product;

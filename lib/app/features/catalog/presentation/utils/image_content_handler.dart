@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:suaka_niaga/app/utils/widgets/shimmer_loading_box.dart';
-import 'package:suaka_niaga/app/features/catalog/presentation/utils/url_image_validation.dart';
+import 'package:suaka_niaga/app/features/catalog/presentation/utils/image_content_validation.dart';
 
 class ImageContentHandler extends StatelessWidget {
   final String imageUrl;

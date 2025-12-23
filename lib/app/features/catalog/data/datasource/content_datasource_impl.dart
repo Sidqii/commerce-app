@@ -10,20 +10,24 @@ class ContentDatasourceImpl implements ContentDatasource {
 
   @override
   Future<List<CatalogModel>> getCataglogDatasource() async {
-    final response = await dio.get('/products');
+    try {
+      final response = await dio.get('/products');
 
-    final jsonData = response.data;
+      final jsonData = response.data;
 
-    if (jsonData is! Map<String, dynamic>) {
-      throw Exception('Response catalog invalid');
+      if (jsonData is! Map<String, dynamic>) {
+        throw Exception('Response catalog invalid');
+      }
+
+      final data = jsonData['products'];
+
+      if (data is! List) {
+        throw Exception('Invalid catalog data');
+      }
+
+      return data.map((json) => CatalogModel.fromJson(json)).toList();
+    } on DioException {
+      rethrow;
     }
-
-    final data = jsonData['products'];
-
-    if (data is! List) {
-      throw Exception('Invalid catalog data');
-    }
-
-    return data.map((json) => CatalogModel.fromJson(json)).toList();
   }
 }

@@ -12,9 +12,7 @@ final catalogRoute = GoRoute(
       path: 'search',
       name: 'catalog_search',
       builder: (context, state) {
-        final keyword = state.uri.queryParameters['keyword'] ?? '';
-
-        return AppSeacrhInitial(initialKeyword: keyword);
+        return AppSeacrhInitial();
       },
     ),
 
@@ -24,10 +22,8 @@ final catalogRoute = GoRoute(
       builder: (context, state) {
         final keyword = state.uri.queryParameters['keyword'] ?? '';
         final category = state.uri.queryParameters['category'] ?? '';
-        //TODO: IMPLEMENT ANOTHER FEATURES
 
         return AppBrowseInitial(category: category, keyword: keyword);
-        // TODO: CATCH FEATURES
       },
     ),
   ],

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:suaka_niaga/app/features/search/domain/entities/autocomplete_entity.dart';
+import 'package:suaka_niaga/app/utils/data/entities/catalog_entity.dart';
 
 class WidgetKeyword extends StatelessWidget {
-  final List<AutocompleteEntity> autocomplete;
+  final List<CatalogEntity> autocomplete;
 
   const WidgetKeyword({
     super.key,

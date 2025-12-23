@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:suaka_niaga/app/features/search/presentation/cubit/search_cubit.dart';
 
-class SearchSuggestionBar extends StatefulWidget {
-  const SearchSuggestionBar({super.key});
+class SearchAutocomplete extends StatefulWidget {
+  const SearchAutocomplete({super.key});
 
   @override
-  State<SearchSuggestionBar> createState() => _SearchSuggestionBarState();
+  State<SearchAutocomplete> createState() => _SearchAutocompleteState();
 }
 
-class _SearchSuggestionBarState extends State<SearchSuggestionBar> {
+class _SearchAutocompleteState extends State<SearchAutocomplete> {
   late final TextEditingController _controller;
   final _focusNode = FocusNode();
 

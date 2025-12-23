@@ -5,7 +5,7 @@ enum SearchStatus { idle, loading, loaded, empty, error }
 class SearchState {
   final String keyword;
   final SearchStatus status;
-  final List<AutocompleteEntity> autocomplete;
+  final List<CatalogEntity> autocomplete;
 
   const SearchState({
     this.keyword = '',
@@ -16,7 +16,7 @@ class SearchState {
   SearchState copyWith({
     String? keyword,
     SearchStatus? status,
-    List<AutocompleteEntity>? autocomplete,
+    List<CatalogEntity>? autocomplete,
   }) {
     return SearchState(
       keyword: keyword ?? this.keyword,

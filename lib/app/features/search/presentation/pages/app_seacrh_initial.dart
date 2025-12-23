@@ -5,9 +5,7 @@ import 'package:suaka_niaga/app/features/search/presentation/pages/search_view.d
 import 'package:suaka_niaga/injection/app_root_dependency.dart';
 
 class AppSeacrhInitial extends StatelessWidget {
-  final String initialKeyword;
-
-  const AppSeacrhInitial({super.key, required this.initialKeyword});
+  const AppSeacrhInitial({super.key});
 
   @override
   Widget build(BuildContext context) {

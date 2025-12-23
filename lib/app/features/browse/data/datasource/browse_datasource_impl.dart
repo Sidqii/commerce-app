@@ -27,20 +27,24 @@ class BrowseDatasourceImpl implements BrowseDatasource {
       query['q'] = keyword;
     }
 
-    final response = await dio.get(endpoint, queryParameters: query);
+    try {
+      final response = await dio.get(endpoint, queryParameters: query);
 
-    final jsonData = response.data;
+      final jsonData = response.data;
 
-    if (jsonData is! Map<String, dynamic>) {
-      throw Exception('Response data invalid');
+      if (jsonData is! Map<String, dynamic>) {
+        throw Exception('Response data invalid');
+      }
+
+      final data = jsonData['products'];
+
+      if (data is! List) {
+        throw Exception('Invalid data catalog');
+      }
+
+      return data.map((json) => CatalogModel.fromJson(json)).toList();
+    } on DioException {
+      rethrow;
     }
-
-    final data = jsonData['products'];
-
-    if (data is! List) {
-      throw Exception('Invalid data catalog');
-    }
-
-    return data.map((json) => CatalogModel.fromJson(json)).toList();
   }
 }

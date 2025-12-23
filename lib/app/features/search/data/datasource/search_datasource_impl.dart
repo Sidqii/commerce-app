@@ -1,25 +1,35 @@
 import 'package:dio/dio.dart';
+import 'package:suaka_niaga/app/utils/data/model/catalog_model.dart';
 import 'package:suaka_niaga/app/features/search/data/datasource/search_datasource.dart';
-import 'package:suaka_niaga/app/features/search/data/model/autocomplete_model.dart';
 
 class SearchDatasourceImpl implements SearchDatasource {
   final Dio dio;
 
   const SearchDatasourceImpl(this.dio);
+
   @override
-  Future<List<AutocompleteModel>> fetchDatasource({
-    required String keyword,
-    int limit = 5,
-  }) async {
-    final response = await dio.get(
-      '/search_suggestions',
-      queryParameters: {'q': keyword, '_limit': limit},
-    );
+  Future<List<CatalogModel>> fetchDatasource({required String keyword}) async {
+    try {
+      final response = await dio.get(
+        '/products',
+        queryParameters: {'q': keyword, 'limit': 5},
+      );
 
-    final List data = response.data as List;
+      final json = response.data;
 
-    return data.map((jsonData) {
-      return AutocompleteModel.fromJson(jsonData as Map<String, dynamic>);
-    }).toList();
+      if (json is! Map<String, dynamic>) {
+        throw Exception();
+      }
+
+      final data = json['products'];
+
+      if (data is! List) {
+        throw Exception();
+      }
+
+      return data.map((jsonData) => CatalogModel.fromJson(jsonData)).toList();
+    } on DioException {
+      rethrow;
+    }
   }
 }

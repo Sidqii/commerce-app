@@ -1,8 +1,5 @@
-import 'package:suaka_niaga/app/features/search/data/model/autocomplete_model.dart';
+import 'package:suaka_niaga/app/utils/data/model/catalog_model.dart';
 
 abstract class SearchDatasource {
-  Future<List<AutocompleteModel>> fetchDatasource({
-    required String keyword,
-    int limit = 5,
-  });
+  Future<List<CatalogModel>> fetchDatasource({required String keyword});
 }

@@ -1,5 +1,5 @@
-import 'package:suaka_niaga/app/features/search/domain/entities/autocomplete_entity.dart';
+import 'package:suaka_niaga/app/utils/data/entities/catalog_entity.dart';
 
 abstract class SearchRepository {
-  Future<List<AutocompleteEntity>> fetchRepository(String keyword);
+  Future<List<CatalogEntity>> fetchRepository(String keyword);
 }

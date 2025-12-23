@@ -1,7 +1,7 @@
-import 'package:suaka_niaga/app/utils/data/model/products_model.dart';
+import 'package:suaka_niaga/app/utils/data/model/catalog_model.dart';
 
 abstract class BrowseDatasource {
-  Future<List<ProductsModel>> fetchBrowseDatsource({
+  Future<List<CatalogModel>> fetchBrowseDatsource({
     String? keyword,
     String? category,
     String? sorting,

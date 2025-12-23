@@ -1,8 +1,8 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'package:suaka_niaga/app/utils/data/entities/catalog_entity.dart';
 import 'package:suaka_niaga/app/features/browse/domain/usecases/browse_fetch_usecase.dart';
-import 'package:suaka_niaga/app/utils/data/entities/products_entity.dart';
 
 part 'browse_event.dart';
 part 'browse_state.dart';

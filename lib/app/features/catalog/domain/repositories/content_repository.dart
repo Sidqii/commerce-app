@@ -1,4 +1,4 @@
-import 'package:suaka_niaga/app/features/catalog/domain/entities/catalog_entity.dart';
+import 'package:suaka_niaga/app/utils/data/entities/catalog_entity.dart';
 
 abstract class ContentRepository {
   Future<List<CatalogEntity>> getCatalogRepository();

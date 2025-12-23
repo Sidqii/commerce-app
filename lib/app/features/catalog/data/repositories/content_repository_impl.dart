@@ -1,5 +1,5 @@
 import 'package:suaka_niaga/app/features/catalog/data/datasource/content_datasource.dart';
-import 'package:suaka_niaga/app/features/catalog/domain/entities/catalog_entity.dart';
+import 'package:suaka_niaga/app/utils/data/entities/catalog_entity.dart';
 import 'package:suaka_niaga/app/features/catalog/domain/repositories/content_repository.dart';
 
 class ContentRepositoryImpl implements ContentRepository {

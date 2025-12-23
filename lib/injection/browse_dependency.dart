@@ -1,5 +1,5 @@
+import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
-import 'package:suaka_niaga/app/utils/config/app_env.dart';
 import 'package:suaka_niaga/app/features/browse/data/datasource/browse_datasource.dart';
 import 'package:suaka_niaga/app/features/browse/data/datasource/browse_datasource_impl.dart';
 import 'package:suaka_niaga/app/features/browse/data/repositories/browse_repository_impl.dart';
@@ -11,7 +11,7 @@ extension BrowseDependency on GetIt {
   void registerBrowse() {
     // REGISTER DATASOURCE + URL
     registerLazySingleton<BrowseDatasource>(() {
-      return BrowseDatasourceImpl(this(), this<AppEnv>().url);
+      return BrowseDatasourceImpl(this<Dio>());
     });
 
     // REGISTER REPOSITORY

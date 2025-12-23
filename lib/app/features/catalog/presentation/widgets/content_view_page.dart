@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import 'package:suaka_niaga/app/features/catalog/domain/entities/catalog_entity.dart';
+import 'package:suaka_niaga/app/utils/data/entities/catalog_entity.dart';
 
 import 'package:suaka_niaga/app/features/catalog/presentation/utils/app_grid_delegate.dart';
 import 'package:suaka_niaga/app/features/catalog/presentation/utils/app_content_gradient.dart';

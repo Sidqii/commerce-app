@@ -19,7 +19,7 @@ class BrowseLoadingState extends BrowseState {
 }
 
 class BrowseLoadedState extends BrowseState {
-  final List<ProductsEntity> entity;
+  final List<CatalogEntity> entity;
 
   const BrowseLoadedState(this.entity);
 

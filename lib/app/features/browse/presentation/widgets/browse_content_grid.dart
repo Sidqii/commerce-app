@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:suaka_niaga/app/utils/data/entities/products_entity.dart';
+import 'package:suaka_niaga/app/utils/data/entities/catalog_entity.dart';
 import 'package:suaka_niaga/app/features/catalog/presentation/utils/app_grid_delegate.dart';
 import 'package:suaka_niaga/app/features/catalog/presentation/utils/image_content_handler.dart';
 import 'package:suaka_niaga/app/features/catalog/presentation/utils/image_content_compresser.dart';
 
 class BrowseContentGrid extends StatelessWidget {
-  final List<ProductsEntity> product;
+  final List<CatalogEntity> product;
 
   const BrowseContentGrid({super.key, required this.product});
 
@@ -40,7 +40,7 @@ class BrowseContentGrid extends StatelessWidget {
                   children: [
                     Positioned.fill(
                       child: ImageContentHandler(
-                        imageUrl: compressImageUrl(item.media.first),
+                        imageUrl: compressImageUrl(item.image.first),
                       ),
                     ),
 
@@ -69,7 +69,7 @@ class BrowseContentGrid extends StatelessWidget {
                           SizedBox(
                             width: MediaQuery.of(context).size.width * 0.43,
                             child: Text(
-                              item.name,
+                              item.title,
                               overflow: TextOverflow.ellipsis,
                               style: title,
                             ),

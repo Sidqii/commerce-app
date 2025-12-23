@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:suaka_niaga/app/features/catalog/domain/entities/catalog_entity.dart';
+import 'package:suaka_niaga/app/utils/data/entities/catalog_entity.dart';
 import 'package:suaka_niaga/app/features/catalog/domain/repositories/content_repository.dart';
 
 part 'content_event.dart';

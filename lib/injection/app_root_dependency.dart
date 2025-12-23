@@ -4,7 +4,6 @@ import 'package:suaka_niaga/injection/browse_dependency.dart';
 import 'package:suaka_niaga/injection/network_dependency.dart';
 import 'package:suaka_niaga/injection/catalog_dependency.dart';
 import 'package:suaka_niaga/injection/search_dependency.dart';
-import 'package:suaka_niaga/injection/testing_dependency.dart';
 
 final sl = GetIt.instance;
 
@@ -16,6 +15,4 @@ Future<void> init() async {
   sl.registerCatalog();
   sl.registerSearch();
   sl.registerBrowse();
-
-  sl.registerTesting();
 }

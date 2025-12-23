@@ -1,7 +1,7 @@
-import 'package:suaka_niaga/app/utils/data/entities/products_entity.dart';
+import 'package:suaka_niaga/app/utils/data/entities/catalog_entity.dart';
 
 abstract class BrowseRepository {
-  Future<List<ProductsEntity>> fetchBrowseRepository({
+  Future<List<CatalogEntity>> fetchBrowseRepository({
     String? keyword,
     String? category,
     String? sorting,

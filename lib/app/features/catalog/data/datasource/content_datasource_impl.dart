@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'content_datasource.dart';
 
-import 'package:suaka_niaga/app/features/catalog/data/model/catalog_model.dart';
+import 'package:suaka_niaga/app/utils/data/model/catalog_model.dart';
 
 class ContentDatasourceImpl implements ContentDatasource {
   final Dio dio;

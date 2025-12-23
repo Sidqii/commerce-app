@@ -1,16 +1,14 @@
-import 'dart:convert';
-import 'package:http/http.dart' as http;
-import 'package:suaka_niaga/app/features/browse/data/datasource/browse_datasource.dart';
-import 'package:suaka_niaga/app/utils/data/model/products_model.dart';
+import 'package:dio/dio.dart';
+import 'browse_datasource.dart';
+import 'package:suaka_niaga/app/utils/data/model/catalog_model.dart';
 
 class BrowseDatasourceImpl implements BrowseDatasource {
-  final http.Client client;
-  final String baseUrl;
+  final Dio dio;
 
-  const BrowseDatasourceImpl(this.client, this.baseUrl);
+  const BrowseDatasourceImpl(this.dio);
 
   @override
-  Future<List<ProductsModel>> fetchBrowseDatsource({
+  Future<List<CatalogModel>> fetchBrowseDatsource({
     String? keyword,
     String? category,
     String? sorting,
@@ -26,7 +24,6 @@ class BrowseDatasourceImpl implements BrowseDatasource {
 
     if (category != null && category.trim().isNotEmpty) {
       query['category.name'] = category;
-
     }
 
     if (sorting != null) {
@@ -42,16 +39,23 @@ class BrowseDatasourceImpl implements BrowseDatasource {
     }
 
     query['_page'] = page.toString();
+    
     query['_limit'] = '20';
 
-    final url = Uri.parse(
-      baseUrl,
-    ).replace(path: '/products', queryParameters: query);
+    final response = await dio.get('/products');
 
-    final response = await client.get(url);
+    final jsonData = response.data;
 
-    final data = jsonDecode(response.body) as List;
+    if (jsonData is! Map<String, dynamic>) {
+      throw Exception('Response data invalid');
+    }
 
-    return data.map((jsonData) => ProductsModel.fromJson(jsonData)).toList();
+    final data = jsonData['products'];
+
+    if (data is! List) {
+      throw Exception('Invalid catalog data');
+    }
+
+    return data.map((json) => CatalogModel.fromJson(json)).toList();
   }
 }

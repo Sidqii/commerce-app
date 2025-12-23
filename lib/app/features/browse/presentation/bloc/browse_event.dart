@@ -2,32 +2,23 @@ part of 'browse_bloc.dart';
 
 sealed class BrowseEvent extends Equatable {
   const BrowseEvent();
-}
-
-class BrowseFetchEvent extends BrowseEvent {
-  final String? keyword;
-  final String? category;
-  final String? sorting;
-  final int? maximal;
-  final int? minimal;
-  final int page;
-
-  const BrowseFetchEvent({
-    this.keyword,
-    this.category,
-    this.sorting,
-    this.maximal,
-    this.minimal,
-    this.page = 1,
-  });
 
   @override
-  List<Object?> get props => [
-    keyword,
-    category,
-    sorting,
-    maximal,
-    minimal,
-    page,
-  ];
+  List<Object?> get props => [];
 }
+
+class BrowseFetchEvent extends BrowseEvent {}
+
+class BrowseLoadEvent extends BrowseEvent {}
+
+class BrowseFilterEvent extends BrowseEvent {
+  final String? category;
+  final String? keyword;
+
+  const BrowseFilterEvent(this.category, this.keyword);
+
+  @override
+  List<Object?> get props => [category, keyword];
+}
+
+class BrowseRetryEvent extends BrowseEvent {}

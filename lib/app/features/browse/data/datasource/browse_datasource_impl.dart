@@ -3,46 +3,31 @@ import 'browse_datasource.dart';
 import 'package:suaka_niaga/app/utils/data/model/catalog_model.dart';
 
 class BrowseDatasourceImpl implements BrowseDatasource {
+  static const int pageSize = 10;
   final Dio dio;
 
   const BrowseDatasourceImpl(this.dio);
 
   @override
   Future<List<CatalogModel>> fetchBrowseDatsource({
-    String? keyword,
     String? category,
-    String? sorting,
-    int? maximal,
-    int? minimal,
+    String? keyword,
     int page = 1,
   }) async {
-    final query = <String, String>{};
+    final skip = (page - 1) * pageSize;
 
-    if (keyword != null && keyword.trim().isNotEmpty) {
+    String endpoint = '/products';
+
+    final query = <String, dynamic>{'limit': pageSize, 'skip': skip};
+
+    if (category != null && category.isNotEmpty) {
+      endpoint = '/products/category/$category';
+    } else if (keyword != null && keyword.isNotEmpty) {
+      endpoint = '/products/search';
       query['q'] = keyword;
     }
 
-    if (category != null && category.trim().isNotEmpty) {
-      query['category.name'] = category;
-    }
-
-    if (sorting != null) {
-      query['_sort'] = sorting;
-    }
-
-    if (maximal != null) {
-      query['price_lte'] = maximal.toString();
-    }
-
-    if (minimal != null) {
-      query['price_gte'] = minimal.toString();
-    }
-
-    query['_page'] = page.toString();
-    
-    query['_limit'] = '20';
-
-    final response = await dio.get('/products');
+    final response = await dio.get(endpoint, queryParameters: query);
 
     final jsonData = response.data;
 
@@ -53,7 +38,7 @@ class BrowseDatasourceImpl implements BrowseDatasource {
     final data = jsonData['products'];
 
     if (data is! List) {
-      throw Exception('Invalid catalog data');
+      throw Exception('Invalid data catalog');
     }
 
     return data.map((json) => CatalogModel.fromJson(json)).toList();

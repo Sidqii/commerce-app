@@ -9,19 +9,13 @@ class BrowseRepositoryImpl implements BrowseRepository {
 
   @override
   Future<List<CatalogEntity>> fetchBrowseRepository({
-    String? keyword,
     String? category,
-    String? sorting,
-    int? minimal,
-    int? maximal,
+    String? keyword,
     int page = 1,
   }) async {
     final result = await datasource.fetchBrowseDatsource(
-      keyword: keyword,
       category: category,
-      sorting: sorting,
-      minimal: minimal,
-      maximal: maximal,
+      keyword: keyword,
       page: page,
     );
 

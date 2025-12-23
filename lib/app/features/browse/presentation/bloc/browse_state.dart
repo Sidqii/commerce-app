@@ -2,45 +2,60 @@ part of 'browse_bloc.dart';
 
 sealed class BrowseState extends Equatable {
   const BrowseState();
-}
-
-class BrowseInitialState extends BrowseState {
-  const BrowseInitialState();
 
   @override
   List<Object?> get props => [];
 }
 
-class BrowseLoadingState extends BrowseState {
-  const BrowseLoadingState();
-
-  @override
-  List<Object?> get props => [];
-}
+class BrowseInitialState extends BrowseState {}
 
 class BrowseLoadedState extends BrowseState {
-  final List<CatalogEntity> entity;
+  final List<CatalogEntity> catalog;
+  final int page;
+  final bool isloading;
+  final bool ismaximal;
+  final String? category;
+  final String? keyword;
+  final String? error;
 
-  const BrowseLoadedState(this.entity);
+  const BrowseLoadedState({
+    this.catalog = const [],
+    this.page = 1,
+    this.isloading = false,
+    this.ismaximal = false,
+    this.category,
+    this.keyword,
+    this.error,
+  });
+
+  BrowseLoadedState copyWith({
+    final List<CatalogEntity>? catalog,
+    final int? page,
+    final bool? isloading,
+    final bool? ismaximal,
+    final String? category,
+    final String? keyword,
+    final String? error,
+  }) {
+    return BrowseLoadedState(
+      catalog: catalog ?? this.catalog,
+      page: page ?? this.page,
+      isloading: isloading ?? this.isloading,
+      ismaximal: ismaximal ?? this.ismaximal,
+      category: category ?? this.category,
+      keyword: keyword ?? this.keyword,
+      error: error,
+    );
+  }
 
   @override
-  List<Object?> get props => [entity];
-}
-
-class BrowseEmptyState extends BrowseState {
-  final String message;
-
-  const BrowseEmptyState(this.message);
-
-  @override
-  List<Object?> get props => [message];
-}
-
-class BrowseErrorState extends BrowseState {
-  final String message;
-
-  const BrowseErrorState(this.message);
-
-  @override
-  List<Object?> get props => [message];
+  List<Object?> get props => [
+    catalog,
+    page,
+    isloading,
+    ismaximal,
+    category,
+    keyword,
+    error,
+  ];
 }

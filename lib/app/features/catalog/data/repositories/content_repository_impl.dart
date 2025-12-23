@@ -1,6 +1,5 @@
 import 'package:suaka_niaga/app/features/catalog/data/datasource/content_datasource.dart';
-import 'package:suaka_niaga/app/utils/data/entities/category_entity.dart';
-import 'package:suaka_niaga/app/utils/data/entities/products_entity.dart';
+import 'package:suaka_niaga/app/features/catalog/domain/entities/catalog_entity.dart';
 import 'package:suaka_niaga/app/features/catalog/domain/repositories/content_repository.dart';
 
 class ContentRepositoryImpl implements ContentRepository {
@@ -9,29 +8,33 @@ class ContentRepositoryImpl implements ContentRepository {
   ContentRepositoryImpl(this.datasource);
 
   @override
-  Future<List<ProductsEntity>> fetchCatalogRepository() async {
-    final data = await datasource.fetchCatalogDatasource();
+  Future<List<CatalogEntity>> getCatalogRepository() async {
+    final data = await datasource.getCataglogDatasource();
 
-    final catalog = data.map((datasource) => datasource.toEntity()).toList();
-
-    return catalog;
+    return data.map((model) => model.toEntity()).toList();
   }
 
   @override
-  Future<List<CategoryEntity>> fetchCategoryRepository() async {
-    final data = await datasource.fetchCategoryDatasource();
+  Future<List<CatalogEntity>> getCategoryRepository() async {
+    final request = await datasource.getCataglogDatasource();
 
-    final category = data.map((datasource) => datasource.toEntity()).toList();
+    final result = request.map((model) => model.toEntity()).toList();
 
-    return category;
+    final dataset = result.map((e) => e.category).toSet().toList();
+
+    return dataset.map((set) {
+      return result.firstWhere((element) => element.category == set);
+    }).toList();
   }
 
   @override
-  Future<List<String>> fetchBannerRepository() async {
-    final data = await datasource.fetchBannerDatasource();
+  Future<List<String>> getBannerRepository() async {
+    final result = await datasource.getCataglogDatasource();
 
-    final banner = data.map((datasource) => datasource.toString()).toList();
+    final models = result.map((model) => model.toEntity()).toList();
 
-    return banner;
+    final images = models.where((element) => element.image.isNotEmpty);
+
+    return images.map((e) => e.image.first).toList();
   }
 }

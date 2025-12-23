@@ -4,7 +4,7 @@ import 'package:suaka_niaga/app/features/search/presentation/cubit/search_cubit.
 import 'package:suaka_niaga/app/features/search/presentation/widgets/search_suggestion_bar.dart';
 import 'package:suaka_niaga/app/features/search/presentation/widgets/widget_keyword.dart';
 import 'package:suaka_niaga/app/features/search/presentation/widgets/widget_suggestion.dart';
-import 'package:suaka_niaga/app/utils/widgets/linear_loading_indicator.dart';
+import 'package:suaka_niaga/app/utils/components/loading_linear_indicator.dart';
 
 class SearchView extends StatelessWidget {
   const SearchView({super.key});
@@ -29,7 +29,7 @@ class SearchView extends StatelessWidget {
                         return const WidgetSuggestion();
 
                       case SearchStatus.loading:
-                        return const LinearLoadingIndicator();
+                        return const LoadingLinearIndicator();
 
                       case SearchStatus.loaded:
                         return WidgetKeyword(autocomplete: state.autocomplete);

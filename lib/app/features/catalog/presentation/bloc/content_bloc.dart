@@ -2,62 +2,38 @@ import 'package:flutter/material.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:suaka_niaga/app/utils/data/entities/category_entity.dart';
-import 'package:suaka_niaga/app/utils/data/entities/products_entity.dart';
-
-import 'package:suaka_niaga/app/features/catalog/domain/usecases/fetch_category_usecase.dart';
-import 'package:suaka_niaga/app/features/catalog/domain/usecases/fetch_banner_usecase.dart';
-import 'package:suaka_niaga/app/features/catalog/domain/usecases/fetch_content_usecase.dart';
+import 'package:suaka_niaga/app/features/catalog/domain/entities/catalog_entity.dart';
+import 'package:suaka_niaga/app/features/catalog/domain/repositories/content_repository.dart';
 
 part 'content_event.dart';
 part 'content_state.dart';
 
 class ContentBloc extends Bloc<ContentEvent, ContentState> {
-  final FetchCatalogUsecase usecasesFetchCatalog;
-  final FetchCategoryUsecase usecaseFetchCategory;
-  final FetchBannerUsecase usecasesFetchBanner;
+  final ContentRepository repository;
 
-  ContentBloc({
-    required this.usecasesFetchCatalog,
-    required this.usecaseFetchCategory,
-    required this.usecasesFetchBanner,
-  }) : super(CatalogInitialState()) {
-    on<CatalogFetchEvent>(_onFetchEvent);
-  }
+  ContentBloc(this.repository) : super(CatalogInitialState()) {
+    on<CatalogFetchEvent>((event, emit) async {
+      emit(CatalogLoadingState());
 
-  Future<void> _onFetchEvent(
-    CatalogFetchEvent event,
-    Emitter<ContentState> emit,
-  ) async {
-    emit(CatalogLoadingState());
+      try {
+        final category = await repository.getCategoryRepository();
 
-    try {
-      final catalog = await usecasesFetchCatalog();
+        final banner = await repository.getBannerRepository();
 
-      final banner = await usecasesFetchBanner();
+        if (category.isEmpty) {
+          emit(CatalogEmptyState('Category is empty'));
+          return;
+        }
 
-      final category = await usecaseFetchCategory();
+        if (banner.isEmpty) {
+          emit(CatalogEmptyState('Banner is empty'));
+          return;
+        }
 
-      if (catalog.isEmpty) {
-        emit(CatalogEmptyState('Catalog kosong'));
-        return;
+        emit(CatalogLoadedState(category, banner));
+      } catch (e) {
+        emit(CatalogErrorState('Error: $e'));
       }
-
-      if (banner.isEmpty) {
-        emit(CatalogEmptyState('Banner kosong'));
-        return;
-      }
-
-      if (category.isEmpty) {
-        emit(CatalogEmptyState('Category kosong'));
-        return;
-      }
-
-      emit(
-        CatalogDataState(catalog: catalog, banners: banner, category: category),
-      );
-    } catch (e) {
-      emit(CatalogErrorState('Error: $e'));
-    }
+    });
   }
 }

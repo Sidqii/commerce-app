@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'package:suaka_niaga/app/utils/components/loading_linear_indicator.dart';
 
 import 'package:suaka_niaga/app/features/catalog/presentation/bloc/content_bloc.dart';
+
 import 'package:suaka_niaga/app/features/catalog/presentation/widgets/content_view_page.dart';
 import 'package:suaka_niaga/app/features/catalog/presentation/widgets/search_initial_bar.dart';
-import 'package:suaka_niaga/app/utils/widgets/linear_loading_indicator.dart';
 
 class CatalogView extends StatelessWidget {
   const CatalogView({super.key});
@@ -35,18 +37,17 @@ class CatalogView extends StatelessWidget {
                 child: BlocBuilder<ContentBloc, ContentState>(
                   builder: (context, state) {
                     if (state is CatalogLoadingState) {
-                      return const LinearLoadingIndicator();
+                      return const LoadingLinearIndicator();
                     }
 
                     if (state is CatalogEmptyState) {
-                      return const Center(child: Text('Tidak ada data'));
+                      return Center(child: Text(state.message));
                     }
 
-                    if (state is CatalogDataState) {
+                    if (state is CatalogLoadedState) {
                       return CardScreenPage(
-                        catalog: state.catalog,
                         category: state.category,
-                        banners: state.banners,
+                        banner: state.banner,
                       );
                     }
 

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:suaka_niaga/app/features/browse/presentation/bloc/browse_bloc.dart';
 import 'package:suaka_niaga/app/features/browse/presentation/widgets/browse_content_grid.dart';
-import 'package:suaka_niaga/app/utils/widgets/linear_loading_indicator.dart';
+import 'package:suaka_niaga/app/utils/components/loading_linear_indicator.dart';
 
 class BrowseView extends StatelessWidget {
   const BrowseView({super.key});
@@ -14,7 +14,7 @@ class BrowseView extends StatelessWidget {
         child: BlocBuilder<BrowseBloc, BrowseState>(
           builder: (context, state) {
             if (state is BrowseLoadingState) {
-              return const LinearLoadingIndicator();
+              return const LoadingLinearIndicator();
             }
 
             if (state is BrowseEmptyState) {

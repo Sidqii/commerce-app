@@ -1,4 +1,4 @@
-class CatalogEntity {
+class TestingEntity {
   final int id;
   final String title;
   final String description;
@@ -7,7 +7,7 @@ class CatalogEntity {
   final int stocks;
   final String brand;
 
-  const CatalogEntity({
+  const TestingEntity({
     required this.id,
     required this.title,
     required this.description,

@@ -1,26 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import 'package:suaka_niaga/app/features/catalog/domain/entities/catalog_entity.dart';
+
 import 'package:suaka_niaga/app/features/catalog/presentation/utils/app_grid_delegate.dart';
+import 'package:suaka_niaga/app/features/catalog/presentation/utils/app_content_gradient.dart';
 import 'package:suaka_niaga/app/features/catalog/presentation/utils/image_content_handler.dart';
 import 'package:suaka_niaga/app/features/catalog/presentation/utils/image_content_compresser.dart';
-
-import 'package:suaka_niaga/app/utils/data/entities/category_entity.dart';
-import 'package:suaka_niaga/app/utils/data/entities/products_entity.dart';
 
 part 'content_banner_widget.dart';
 part 'content_card_widget.dart';
 
 class CardScreenPage extends StatefulWidget {
-  final List<ProductsEntity> catalog;
-  final List<CategoryEntity> category;
-  final List<String> banners;
+  final List<CatalogEntity> category;
+  final List<String> banner;
 
   const CardScreenPage({
     super.key,
-    required this.catalog,
     required this.category,
-    required this.banners,
+    required this.banner,
   });
 
   @override
@@ -58,12 +56,25 @@ class _CardScreenPageState extends State<CardScreenPage> {
         keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
         slivers: [
           // BANNER
-          ContentBannerWidget(imageUrl: widget.banners),
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.only(bottom: 5),
+              child: ContentBannerWidget(imageUrl: widget.banner),
+            ),
+          ),
 
           // GRID VIEW CONTENT
-          ContentCardWidget(
-            entity: widget.catalog,
-            categories: widget.category,
+          SliverPadding(
+            padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 30),
+            sliver: SliverGrid.builder(
+              itemCount: widget.category.length,
+              gridDelegate: AppGridDelegate.catalogGrid,
+              itemBuilder: (context, index) {
+                final products = widget.category[index];
+
+                return ContentCardWidget(category: products);
+              },
+            ),
           ),
 
           // FOOTER

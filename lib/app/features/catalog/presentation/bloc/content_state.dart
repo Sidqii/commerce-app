@@ -3,35 +3,23 @@ part of "content_bloc.dart";
 @immutable
 sealed class ContentState extends Equatable {
   const ContentState();
-}
-
-class CatalogInitialState extends ContentState {
-  const CatalogInitialState();
 
   @override
   List<Object?> get props => [];
 }
 
-class CatalogLoadingState extends ContentState {
-  const CatalogLoadingState();
+class CatalogInitialState extends ContentState {}
+
+class CatalogLoadingState extends ContentState {}
+
+class CatalogLoadedState extends ContentState {
+  final List<CatalogEntity> category;
+  final List<String> banner;
+
+  const CatalogLoadedState(this.category, this.banner);
 
   @override
-  List<Object?> get props => [];
-}
-
-class CatalogDataState extends ContentState {
-  final List<ProductsEntity> catalog;
-  final List<CategoryEntity> category;
-  final List<String> banners;
-
-  const CatalogDataState({
-    required this.catalog,
-    required this.category,
-    required this.banners,
-  });
-
-  @override
-  List<Object?> get props => [catalog, category, banners];
+  List<Object?> get props => [category, banner];
 }
 
 class CatalogEmptyState extends ContentState {

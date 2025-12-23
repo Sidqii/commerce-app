@@ -1,10 +1,5 @@
-import 'package:suaka_niaga/app/utils/data/model/category_model.dart';
-import 'package:suaka_niaga/app/utils/data/model/products_model.dart';
+import 'package:suaka_niaga/app/features/catalog/data/model/catalog_model.dart';
 
 abstract class ContentDatasource {
-  Future<List<ProductsModel>> fetchCatalogDatasource();
-
-  Future<List<CategoryModel>> fetchCategoryDatasource();
-
-  Future<List<String>> fetchBannerDatasource();
+  Future<List<CatalogModel>> getCataglogDatasource();
 }

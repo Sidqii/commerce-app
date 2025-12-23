@@ -1,44 +1,29 @@
-import 'dart:convert';
-import 'package:suaka_niaga/app/utils/data/model/category_model.dart';
-
+import 'package:dio/dio.dart';
 import 'content_datasource.dart';
-import 'package:http/http.dart' as http;
-import 'package:suaka_niaga/app/utils/data/model/products_model.dart';
+
+import 'package:suaka_niaga/app/features/catalog/data/model/catalog_model.dart';
 
 class ContentDatasourceImpl implements ContentDatasource {
-  final http.Client client;
-  final String base;
+  final Dio dio;
 
-  const ContentDatasourceImpl(this.client, this.base);
-
-  @override
-  Future<List<ProductsModel>> fetchCatalogDatasource() async {
-    final response = await client.get(Uri.parse('$base/products'));
-
-    final data = jsonDecode(response.body) as List;
-
-    return data.map((jsonData) => ProductsModel.fromJson(jsonData)).toList();
-  }
+  const ContentDatasourceImpl(this.dio);
 
   @override
-  Future<List<CategoryModel>> fetchCategoryDatasource() async {
-    final response = await client.get(Uri.parse('$base/categories'));
+  Future<List<CatalogModel>> getCataglogDatasource() async {
+    final response = await dio.get('/products');
 
-    final data = jsonDecode(response.body) as List;
+    final jsonData = response.data;
 
-    return data.map((jsonData) => CategoryModel.fromJson(jsonData)).toList();
-  }
-
-  @override
-  Future<List<String>> fetchBannerDatasource() async {
-    final response = await client.get(Uri.parse('$base/banner'));
-
-    if (response.statusCode != 200) {
-      throw Exception('API error');
+    if (jsonData is! Map<String, dynamic>) {
+      throw Exception('Response catalog invalid');
     }
 
-    final List<dynamic> data = jsonDecode(response.body);
+    final data = jsonData['products'];
 
-    return data.map((jsonData) => jsonData.toString()).toList();
+    if (data is! List) {
+      throw Exception('Invalid catalog data');
+    }
+
+    return data.map((json) => CatalogModel.fromJson(json)).toList();
   }
 }

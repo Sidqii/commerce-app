@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:suaka_niaga/app/utils/widgets/shimmer_loading_box.dart';
+import 'package:suaka_niaga/app/utils/components/loading_shimmer_indicator.dart';
 import 'package:suaka_niaga/app/features/catalog/presentation/utils/image_content_validation.dart';
 
 class ImageContentHandler extends StatelessWidget {
@@ -21,7 +21,7 @@ class ImageContentHandler extends StatelessWidget {
 
       errorWidget: (context, url, error) => _placeholder(),
       progressIndicatorBuilder: (context, url, progress) {
-        return const ShimmerLoadingBox(
+        return const LoadingShimmerIndicator(
           width: double.infinity,
           height: double.infinity,
         );

@@ -22,7 +22,7 @@ class BrowseLoadingState extends BrowseState {
 class BrowseLoadedState extends BrowseState {
   final List<CatalogEntity> catalog;
   final int page;
-  final bool? isloadmore;
+  final bool isloadmore;
   final bool ismaximal;
   final String? category;
   final String? keyword;

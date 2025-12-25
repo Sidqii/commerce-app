@@ -29,18 +29,10 @@ class BrowseView extends StatelessWidget {
             }
 
             if (state is BrowseLoadedState) {
-              return Stack(
-                children: [
-                  if (state.isloadmore!)
-                    const Positioned(
-                      top: 0,
-                      left: 0,
-                      right: 0,
-                      child: LoadingLinearIndicator(),
-                    ),
-
-                  BrowseContentGrid(product: state.catalog),
-                ],
+              return BrowseContentGrid(
+                product: state.catalog,
+                ismaximal: state.ismaximal,
+                isloadmore: state.isloadmore,
               );
             }
 

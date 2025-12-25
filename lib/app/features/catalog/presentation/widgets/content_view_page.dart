@@ -28,7 +28,7 @@ class CardScreenPage extends StatefulWidget {
 class _CardScreenPageState extends State<CardScreenPage> {
   final ValueNotifier<bool> isOverScroll = ValueNotifier(false);
 
-  void _handleScroll(ScrollNotification notification) {
+  void handleScroll(ScrollNotification notification) {
     final overNotif = notification is OverscrollNotification;
 
     if (overNotif && notification.overscroll > 0) {
@@ -45,10 +45,16 @@ class _CardScreenPageState extends State<CardScreenPage> {
   }
 
   @override
+  void dispose() {
+    isOverScroll.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return NotificationListener<ScrollNotification>(
       onNotification: (notification) {
-        _handleScroll(notification);
+        handleScroll(notification);
 
         return false;
       },
@@ -65,7 +71,7 @@ class _CardScreenPageState extends State<CardScreenPage> {
 
           // GRID VIEW CONTENT
           SliverPadding(
-            padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 30),
+            padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
             sliver: SliverGrid.builder(
               itemCount: widget.category.length,
               gridDelegate: AppGridDelegate.catalogGrid,
@@ -78,23 +84,23 @@ class _CardScreenPageState extends State<CardScreenPage> {
           ),
 
           // FOOTER
-          ValueListenableBuilder(
-            valueListenable: isOverScroll,
-            builder: (context, value, child) {
-              if (!value) return const SliverToBoxAdapter(child: SizedBox());
+          SliverToBoxAdapter(
+            child: ValueListenableBuilder(
+              valueListenable: isOverScroll,
+              builder: (context, value, child) {
+                if (!value) return SizedBox.shrink();
 
-              return SliverToBoxAdapter(
-                child: const Padding(
-                  padding: EdgeInsets.only(bottom: 25),
+                return const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 10),
                   child: Center(
                     child: Text(
                       'Tidak ada produk lainnya',
                       style: TextStyle(fontSize: 12),
                     ),
                   ),
-                ),
-              );
-            },
+                );
+              },
+            ),
           ),
         ],
       ),

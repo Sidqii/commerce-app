@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 
 class LoadingLinearIndicator extends StatelessWidget {
-  const LoadingLinearIndicator({super.key});
+  final double? width;
+
+  const LoadingLinearIndicator({super.key, this.width});
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
+    return Center(
       child: SizedBox(
-        width: 150,
+        width: width ?? 150,
         child: LinearProgressIndicator(
           color: Color(0xFF212121),
           minHeight: 1,

@@ -35,9 +35,10 @@ class SearchCubit extends Cubit<SearchState> {
 
       if (result.isEmpty) {
         emit(state.copyWith(autocomplete: [], status: SearchStatus.empty));
-      } else {
-        emit(state.copyWith(autocomplete: result, status: SearchStatus.loaded));
+        return;
       }
+
+      emit(state.copyWith(autocomplete: result, status: SearchStatus.loaded));
     } catch (e) {
       emit(state.copyWith(status: SearchStatus.error, keyword: keyword));
     }

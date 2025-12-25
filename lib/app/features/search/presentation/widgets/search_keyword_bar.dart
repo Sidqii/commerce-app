@@ -4,14 +4,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:suaka_niaga/app/features/search/presentation/cubit/search_cubit.dart';
 
-class SearchAutocomplete extends StatefulWidget {
-  const SearchAutocomplete({super.key});
+class SearchKeywordBar extends StatefulWidget {
+  const SearchKeywordBar({super.key});
 
   @override
-  State<SearchAutocomplete> createState() => _SearchAutocompleteState();
+  State<SearchKeywordBar> createState() => _SearchKeywordBarState();
 }
 
-class _SearchAutocompleteState extends State<SearchAutocomplete> {
+class _SearchKeywordBarState extends State<SearchKeywordBar> {
   late final TextEditingController _controller;
   final _focusNode = FocusNode();
 

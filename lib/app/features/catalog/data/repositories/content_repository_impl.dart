@@ -8,13 +8,6 @@ class ContentRepositoryImpl implements ContentRepository {
   ContentRepositoryImpl(this.datasource);
 
   @override
-  Future<List<CatalogEntity>> getCatalogRepository() async {
-    final data = await datasource.getCataglogDatasource();
-
-    return data.map((model) => model.toEntity()).toList();
-  }
-
-  @override
   Future<List<CatalogEntity>> getCategoryRepository() async {
     final request = await datasource.getCataglogDatasource();
 

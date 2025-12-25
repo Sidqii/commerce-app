@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:suaka_niaga/app/utils/data/entities/catalog_entity.dart';
 
-class WidgetKeyword extends StatelessWidget {
+class WidgetAutocomplete extends StatelessWidget {
   final List<CatalogEntity> autocomplete;
 
-  const WidgetKeyword({
+  const WidgetAutocomplete({
     super.key,
     required this.autocomplete,
   });
@@ -19,7 +19,7 @@ class WidgetKeyword extends StatelessWidget {
         final word = item.title;
 
         return ListTile(
-          title: Text(item.title),
+          title: Text(word),
           onTap: () {
             context.pushNamed(
               'browse_result',

@@ -11,21 +11,21 @@ import 'package:suaka_niaga/app/features/catalog/presentation/utils/image_conten
 part 'content_banner_widget.dart';
 part 'content_card_widget.dart';
 
-class CardScreenPage extends StatefulWidget {
+class ContentViewPage extends StatefulWidget {
   final List<CatalogEntity> category;
   final List<String> banner;
 
-  const CardScreenPage({
+  const ContentViewPage({
     super.key,
     required this.category,
     required this.banner,
   });
 
   @override
-  State<CardScreenPage> createState() => _CardScreenPageState();
+  State<ContentViewPage> createState() => _ContentViewPageState();
 }
 
-class _CardScreenPageState extends State<CardScreenPage> {
+class _ContentViewPageState extends State<ContentViewPage> {
   final ValueNotifier<bool> isOverScroll = ValueNotifier(false);
 
   void handleScroll(ScrollNotification notification) {

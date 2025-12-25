@@ -23,7 +23,7 @@ class SearchCubit extends Cubit<SearchState> {
 
     emit(state.copyWith(keyword: value, status: SearchStatus.loading));
 
-    _debounce = Timer(const Duration(milliseconds: 500), () {
+    _debounce = Timer(const Duration(milliseconds: 350), () {
       _fetchSuggestion(value);
     });
   }
@@ -33,12 +33,20 @@ class SearchCubit extends Cubit<SearchState> {
     try {
       final result = await repository.fetchRepository(keyword);
 
-      if (result.isEmpty) {
+      final normalize = keyword.toLowerCase();
+
+      final filtering = result.where((element) {
+        return element.title.toLowerCase().contains(normalize);
+      }).toList();
+
+      if (filtering.isEmpty) {
         emit(state.copyWith(autocomplete: [], status: SearchStatus.empty));
         return;
       }
 
-      emit(state.copyWith(autocomplete: result, status: SearchStatus.loaded));
+      emit(
+        state.copyWith(autocomplete: filtering, status: SearchStatus.loaded),
+      );
     } catch (e) {
       emit(state.copyWith(status: SearchStatus.error, keyword: keyword));
     }

@@ -45,7 +45,7 @@ class CatalogView extends StatelessWidget {
                     }
 
                     if (state is CatalogLoadedState) {
-                      return CardScreenPage(
+                      return ContentViewPage(
                         category: state.category,
                         banner: state.banner,
                       );

@@ -7,18 +7,14 @@ sealed class BrowseEvent extends Equatable {
   List<Object?> get props => [];
 }
 
-class BrowseFetchEvent extends BrowseEvent {}
-
-class BrowseLoadEvent extends BrowseEvent {}
-
-class BrowseFilterEvent extends BrowseEvent {
+class BrowseFetchEvent extends BrowseEvent {
   final String? category;
   final String? keyword;
 
-  const BrowseFilterEvent(this.category, this.keyword);
+  const BrowseFetchEvent(this.category, this.keyword);
 
   @override
   List<Object?> get props => [category, keyword];
 }
 
-class BrowseRetryEvent extends BrowseEvent {}
+class BrowseLoadEvent extends BrowseEvent {}

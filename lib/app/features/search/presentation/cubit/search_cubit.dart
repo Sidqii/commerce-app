@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:suaka_niaga/app/features/search/domain/entities/autocomplete_entity.dart';
 import 'package:suaka_niaga/app/features/search/domain/repositories/search_repository.dart';
 import 'package:suaka_niaga/app/utils/data/entities/catalog_entity.dart';
 
@@ -24,7 +23,7 @@ class SearchCubit extends Cubit<SearchState> {
 
     emit(state.copyWith(keyword: value, status: SearchStatus.loading));
 
-    _debounce = Timer(const Duration(milliseconds: 300), () {
+    _debounce = Timer(const Duration(milliseconds: 500), () {
       _fetchSuggestion(value);
     });
   }
@@ -50,10 +49,10 @@ class SearchCubit extends Cubit<SearchState> {
   }
 
   // tap autocomplete
-  void selectSuggestions(AutocompleteEntity autocomplete) {
+  void selectSuggestions(CatalogEntity catalog) {
     emit(
       state.copyWith(
-        keyword: autocomplete.title,
+        keyword: catalog.title,
         autocomplete: const [],
         status: SearchStatus.idle,
       ),

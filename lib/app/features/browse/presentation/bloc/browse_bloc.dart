@@ -14,29 +14,38 @@ class BrowseBloc extends Bloc<BrowseEvent, BrowseState> {
   BrowseBloc(this.repository) : super(BrowseInitialState()) {
     on<BrowseFetchEvent>(_onFetchEvent);
     on<BrowseLoadEvent>(_onLoadMore);
-    on<BrowseFilterEvent>(_onFilterEvent);
-    on<BrowseRetryEvent>(_onRetryEvent);
   }
 
   Future<void> _onFetchEvent(
     BrowseFetchEvent event,
     Emitter<BrowseState> emit,
   ) async {
-    emit(const BrowseLoadedState(isloading: true));
+    emit(BrowseLoadingState(event.category, event.keyword));
 
     try {
-      final result = await repository.fetchBrowseRepository(page: 1);
+      final result = await repository.fetchBrowseRepository(
+        page: 1,
+        keyword: event.keyword,
+        category: event.category,
+      );
+
+      if (result.isEmpty) {
+        emit(BrowseEmptyState(event.category, event.keyword));
+        return;
+      }
 
       emit(
         BrowseLoadedState(
           catalog: result,
           page: 1,
-          isloading: false,
+          category: event.category,
+          keyword: event.keyword,
           ismaximal: result.length < BrowseDatasourceImpl.pageSize,
         ),
       );
     } catch (e) {
-      emit(BrowseLoadedState(isloading: false, error: e.toString()));
+      emit(BrowseErrorState(message: e.toString()));
+      return;
     }
   }
 
@@ -48,9 +57,9 @@ class BrowseBloc extends Bloc<BrowseEvent, BrowseState> {
 
     if (current is! BrowseLoadedState) return;
 
-    if (current.isloading || current.ismaximal) return;
+    if (current.ismaximal) return;
 
-    emit(current.copyWith(isloading: true));
+    emit(current.copyWith(isloadmore: true));
 
     final nextPage = current.page + 1;
 
@@ -65,82 +74,12 @@ class BrowseBloc extends Bloc<BrowseEvent, BrowseState> {
         current.copyWith(
           catalog: [...current.catalog, ...result],
           page: nextPage,
-          isloading: false,
           ismaximal: result.length < BrowseDatasourceImpl.pageSize,
+          isloadmore: false,
         ),
       );
     } catch (e) {
-      emit(current.copyWith(isloading: false, error: e.toString()));
-    }
-  }
-
-  Future<void> _onFilterEvent(
-    BrowseFilterEvent event,
-    Emitter<BrowseState> emit,
-  ) async {
-    emit(
-      BrowseLoadedState(
-        isloading: true,
-        category: event.category,
-        keyword: event.keyword,
-      ),
-    );
-
-    try {
-      final result = await repository.fetchBrowseRepository(
-        page: 1,
-        category: event.category,
-        keyword: event.keyword,
-      );
-
-      emit(
-        BrowseLoadedState(
-          catalog: result,
-          page: 1,
-          isloading: false,
-          ismaximal: result.length < BrowseDatasourceImpl.pageSize,
-          category: event.category,
-          keyword: event.keyword,
-        ),
-      );
-    } catch (e) {
-      emit(
-        BrowseLoadedState(
-          isloading: false,
-          error: e.toString(),
-          category: event.category,
-          keyword: event.keyword,
-        ),
-      );
-    }
-  }
-
-  Future<void> _onRetryEvent(
-    BrowseRetryEvent event,
-    Emitter<BrowseState> emit,
-  ) async {
-    if (state is! BrowseLoadedState) return;
-
-    final current = state as BrowseLoadedState;
-
-    emit(current.copyWith(isloading: true, error: null));
-
-    try {
-      final result = await repository.fetchBrowseRepository(
-        page: current.page,
-        category: current.category,
-        keyword: current.keyword,
-      );
-
-      emit(
-        current.copyWith(
-          catalog: result,
-          isloading: false,
-          ismaximal: result.length < BrowseDatasourceImpl.pageSize,
-        ),
-      );
-    } catch (e) {
-      emit(current.copyWith(isloading: false, error: e.toString()));
+      emit(current.copyWith(isloadmore: false));
     }
   }
 }

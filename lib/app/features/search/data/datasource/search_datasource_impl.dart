@@ -11,7 +11,7 @@ class SearchDatasourceImpl implements SearchDatasource {
   Future<List<CatalogModel>> fetchDatasource({required String keyword}) async {
     try {
       final response = await dio.get(
-        '/products',
+        '/products/search',
         queryParameters: {'q': keyword, 'limit': 5},
       );
 
@@ -31,5 +31,6 @@ class SearchDatasourceImpl implements SearchDatasource {
     } on DioException {
       rethrow;
     }
+    
   }
 }

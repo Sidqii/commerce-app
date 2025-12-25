@@ -14,31 +14,58 @@ class BrowseView extends StatelessWidget {
       body: SafeArea(
         child: BlocBuilder<BrowseBloc, BrowseState>(
           builder: (context, state) {
-            if (state is BrowseInitialState) {
+            if (state is BrowseLoadingState) {
               return const LoadingLinearIndicator();
+            }
+
+            if (state is BrowseEmptyState) {
+              return Center(
+                child: Text(
+                  state.keyword != null
+                      ? '${state.keyword} kosong'
+                      : 'Data kosong',
+                ),
+              );
             }
 
             if (state is BrowseLoadedState) {
               return Stack(
                 children: [
-                  BrowseContentGrid(product: state.catalog),
-
-                  if (state.isloading)
+                  if (state.isloadmore!)
                     const Positioned(
+                      top: 0,
                       left: 0,
                       right: 0,
-                      bottom: 0,
                       child: LoadingLinearIndicator(),
                     ),
+
+                  BrowseContentGrid(product: state.catalog),
                 ],
               );
             }
 
-            if (state is BrowseLoadedState && state.error != null) {
-              return Center(child: Text(state.error!));
+            if (state is BrowseErrorState) {
+              return Center(
+                child: Column(
+                  children: [
+                    Text(state.message),
+
+                    const SizedBox(height: 12),
+
+                    ElevatedButton(
+                      onPressed: () {
+                        context.read<BrowseBloc>().add(
+                          BrowseFetchEvent(state.category, state.keyword),
+                        );
+                      },
+                      child: const Text('coba lagi'),
+                    ),
+                  ],
+                ),
+              );
             }
 
-            return const SizedBox.shrink();
+            return SizedBox.shrink();
           },
         ),
       ),

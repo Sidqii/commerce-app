@@ -9,42 +9,49 @@ sealed class BrowseState extends Equatable {
 
 class BrowseInitialState extends BrowseState {}
 
+class BrowseLoadingState extends BrowseState {
+  final String? category;
+  final String? keyword;
+
+  const BrowseLoadingState(this.category, this.keyword);
+
+  @override
+  List<Object?> get props => [category, keyword];
+}
+
 class BrowseLoadedState extends BrowseState {
+  // TODO: UPDATE
   final List<CatalogEntity> catalog;
   final int page;
-  final bool isloading;
+  final bool? isloadmore;
   final bool ismaximal;
   final String? category;
   final String? keyword;
-  final String? error;
 
   const BrowseLoadedState({
     this.catalog = const [],
     this.page = 1,
-    this.isloading = false,
+    this.isloadmore = false,
     this.ismaximal = false,
     this.category,
     this.keyword,
-    this.error,
   });
 
   BrowseLoadedState copyWith({
     final List<CatalogEntity>? catalog,
     final int? page,
-    final bool? isloading,
+    final bool? isloadmore,
     final bool? ismaximal,
     final String? category,
     final String? keyword,
-    final String? error,
   }) {
     return BrowseLoadedState(
       catalog: catalog ?? this.catalog,
       page: page ?? this.page,
-      isloading: isloading ?? this.isloading,
+      isloadmore: isloadmore ?? this.isloadmore,
       ismaximal: ismaximal ?? this.ismaximal,
       category: category ?? this.category,
       keyword: keyword ?? this.keyword,
-      error: error,
     );
   }
 
@@ -52,10 +59,30 @@ class BrowseLoadedState extends BrowseState {
   List<Object?> get props => [
     catalog,
     page,
-    isloading,
+    isloadmore,
     ismaximal,
     category,
     keyword,
-    error,
   ];
+}
+
+class BrowseEmptyState extends BrowseState {
+  final String? category;
+  final String? keyword;
+
+  const BrowseEmptyState(this.category, this.keyword);
+
+  @override
+  List<Object?> get props => [category, keyword];
+}
+
+class BrowseErrorState extends BrowseState {
+  final String? category;
+  final String? keyword;
+  final String message;
+
+  const BrowseErrorState({this.message = '', this.category, this.keyword});
+
+  @override
+  List<Object?> get props => [message];
 }

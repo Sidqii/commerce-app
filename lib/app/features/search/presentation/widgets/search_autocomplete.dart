@@ -35,75 +35,54 @@ class _SearchAutocompleteState extends State<SearchAutocomplete> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-          child: Container(
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(25),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(25),
+        ),
+        child: TextField(
+          controller: _controller,
+          focusNode: _focusNode,
+          onChanged: (value) {
+            context.read<SearchCubit>().setKeyword(value);
+          },
+          decoration: InputDecoration(
+            isDense: true,
+            suffixIcon: IconButton(
+              onPressed: () {
+                if (_controller.text.isNotEmpty) {
+                  _controller.clear();
+                  context.read<SearchCubit>().clearKeyword();
+                  return;
+                }
+
+                FocusScope.of(context).unfocus();
+                context.pop();
+              },
+              icon: Icon(Icons.clear),
             ),
-            child: TextField(
-              controller: _controller,
-              focusNode: _focusNode,
-              onChanged: (value) {
-                context.read<SearchCubit>().setKeyword(value);
-              },
-              decoration: InputDecoration(
-                isDense: true,
-                suffixIcon: IconButton(
-                  onPressed: () {
-                    if (_controller.text.isNotEmpty) {
-                      _controller.clear();
-                      context.read<SearchCubit>().clearKeyword();
-                      return;
-                    }
-
-                    FocusScope.of(context).unfocus();
-                    context.pop();
-                  },
-                  icon: Icon(Icons.clear),
-                ),
-                hintText: 'Cari produk...',
-                prefixIcon: const Icon(Icons.search),
-                border: InputBorder.none,
-                contentPadding: const EdgeInsets.symmetric(
-                  horizontal: 16,
-                  vertical: 14,
-                ),
-              ),
-              onSubmitted: (value) {
-                final keyword = value.trim();
-
-                if (keyword.isEmpty) return;
-
-                context.pushNamed(
-                  'browse_result',
-                  queryParameters: {'keyword': keyword},
-                );
-              },
+            hintText: 'Cari produk...',
+            prefixIcon: const Icon(Icons.search),
+            border: InputBorder.none,
+            contentPadding: const EdgeInsets.symmetric(
+              horizontal: 16,
+              vertical: 14,
             ),
           ),
-        ),
+          onSubmitted: (value) {
+            final keyword = value.trim();
 
-        BlocBuilder<SearchCubit, SearchState>(
-          builder: (context, state) {
-            if (state.keyword.isEmpty) {
-              return Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 15),
-                child: const Text('Pencarian terakhir'),
-              );
-            }
+            if (keyword.isEmpty) return;
 
-            return Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15),
-              child: Text('Pencarian ${state.keyword}'),
+            context.pushNamed(
+              'browse_result',
+              queryParameters: {'keyword': keyword},
             );
           },
         ),
-      ],
+      ),
     );
   }
 }

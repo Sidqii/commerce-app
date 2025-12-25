@@ -20,7 +20,6 @@ class BrowseLoadingState extends BrowseState {
 }
 
 class BrowseLoadedState extends BrowseState {
-  // TODO: UPDATE
   final List<CatalogEntity> catalog;
   final int page;
   final bool? isloadmore;

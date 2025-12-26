@@ -55,7 +55,21 @@ class SearchView extends StatelessWidget {
                         return const WidgetSuggestion();
 
                       case SearchStatus.loading:
-                        return const LoadingLinearIndicator();
+                        return const Stack(
+                          children: [
+                            Positioned(
+                              top: 0,
+                              left: 0,
+                              right: 0,
+                              child: Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 5),
+                                child: LoadingLinearIndicator(
+                                  width: double.infinity,
+                                ),
+                              ),
+                            ),
+                          ],
+                        );
 
                       case SearchStatus.loaded:
                         return WidgetAutocomplete(

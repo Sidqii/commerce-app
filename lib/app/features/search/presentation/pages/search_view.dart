@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:suaka_niaga/app/utils/components/loading_linear_indicator.dart';
 import 'package:suaka_niaga/app/features/search/presentation/cubit/search_cubit.dart';
 
 import 'package:suaka_niaga/app/features/search/presentation/widgets/search_keyword_bar.dart';
@@ -45,31 +44,17 @@ class SearchView extends StatelessWidget {
 
               Expanded(
                 child: BlocBuilder<SearchCubit, SearchState>(
-                  buildWhen: (previous, current) {
-                    return previous.status != current.status;
+                  buildWhen: (prev, curr) {
+                    final status = prev.status != curr.status;
+                    final autocomplete = prev.autocomplete != curr.autocomplete;
+
+                    return status || autocomplete;
                   },
 
                   builder: (context, state) {
                     switch (state.status) {
                       case SearchStatus.idle:
                         return const WidgetSuggestion();
-
-                      case SearchStatus.loading:
-                        return const Stack(
-                          children: [
-                            Positioned(
-                              top: 0,
-                              left: 0,
-                              right: 0,
-                              child: Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 5),
-                                child: LoadingLinearIndicator(
-                                  width: double.infinity,
-                                ),
-                              ),
-                            ),
-                          ],
-                        );
 
                       case SearchStatus.loaded:
                         return WidgetAutocomplete(

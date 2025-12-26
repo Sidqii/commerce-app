@@ -21,9 +21,9 @@ class SearchCubit extends Cubit<SearchState> {
       return;
     }
 
-    emit(state.copyWith(keyword: value, status: SearchStatus.idle));
+    emit(state.copyWith(keyword: value));
 
-    _debounce = Timer(const Duration(milliseconds: 300), () {
+    _debounce = Timer(const Duration(milliseconds: 100), () {
       if (value.length >= 3) {
         _fetchSuggestion(value);
       }
@@ -32,10 +32,10 @@ class SearchCubit extends Cubit<SearchState> {
 
   // fetching data
   Future<void> _fetchSuggestion(String keyword) async {
-    emit(state.copyWith(status: SearchStatus.loading));
-
     try {
       final result = await repository.fetchRepository(keyword);
+
+      if (state.keyword != keyword) return;
 
       final normalize = keyword.toLowerCase();
 

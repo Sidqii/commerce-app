@@ -1,6 +1,6 @@
 part of 'search_cubit.dart';
 
-enum SearchStatus { idle, loading, loaded, empty, error }
+enum SearchStatus { idle, loaded, empty, error }
 
 class SearchState {
   final String keyword;

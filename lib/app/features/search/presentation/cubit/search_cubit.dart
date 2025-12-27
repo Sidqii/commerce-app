@@ -2,22 +2,25 @@ import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:suaka_niaga/app/features/search/domain/repositories/search_repository.dart';
+import 'package:suaka_niaga/app/features/search/domain/repositories/storage_repository.dart';
 import 'package:suaka_niaga/app/utils/data/entities/catalog_entity.dart';
 
 part 'search_state.dart';
 
 class SearchCubit extends Cubit<SearchState> {
   final SearchRepository repository;
+  final StorageRepository storage;
   Timer? _debounce;
 
-  SearchCubit(this.repository) : super(SearchState());
+  SearchCubit(this.repository, this.storage)
+    : super(SearchState(storage: storage.load()));
 
   // ngetik
   Future<void> setKeyword(String value) async {
     _debounce?.cancel();
 
     if (value.trim().isEmpty) {
-      emit(const SearchState());
+      clearKeyword();
       return;
     }
 
@@ -58,16 +61,34 @@ class SearchCubit extends Cubit<SearchState> {
 
   // bersihin keyboard
   void clearKeyword() {
-    emit(const SearchState());
+    emit(
+      state.copyWith(
+        autocomplete: const [],
+        keyword: '',
+        status: SearchStatus.idle,
+      ),
+    );
   }
 
   // tap autocomplete
-  void selectSuggestions(CatalogEntity catalog) {
+  void selectKeyword(String keyword) async {
+    final history = List<String>.from(state.storage);
+
+    history.remove(keyword);
+
+    history.insert(0, keyword);
+
+    if (history.length > 5) {
+      history.removeRange(5, history.length);
+    }
+
+    await storage.save(keyword);
+
     emit(
       state.copyWith(
-        keyword: catalog.title,
+        keyword: keyword,
         autocomplete: const [],
-        status: SearchStatus.idle,
+        storage: history,
       ),
     );
   }

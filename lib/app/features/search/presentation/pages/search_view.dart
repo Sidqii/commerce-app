@@ -54,7 +54,7 @@ class SearchView extends StatelessWidget {
                   builder: (context, state) {
                     switch (state.status) {
                       case SearchStatus.idle:
-                        return const WidgetSuggestion();
+                        return WidgetSuggestion(suggestion: state.storage);
 
                       case SearchStatus.loaded:
                         return WidgetAutocomplete(

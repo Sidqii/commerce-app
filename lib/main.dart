@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:suaka_niaga/app/utils/router/app_router.dart';
 
@@ -10,6 +11,8 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await init();
+
+  await sl.isReady<SharedPreferences>();
 
   runApp(const MainApp());
 }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:suaka_niaga/app/features/search/presentation/cubit/search_cubit.dart';
 import 'package:suaka_niaga/app/utils/data/entities/catalog_entity.dart';
 
 class WidgetAutocomplete extends StatelessWidget {
@@ -21,6 +23,8 @@ class WidgetAutocomplete extends StatelessWidget {
         return ListTile(
           title: Text(word),
           onTap: () {
+            context.read<SearchCubit>().selectKeyword(word);
+
             context.pushNamed(
               'browse_result',
               queryParameters: {'keyword': word},

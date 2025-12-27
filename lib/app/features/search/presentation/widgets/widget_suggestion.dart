@@ -1,19 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:suaka_niaga/app/features/search/presentation/cubit/search_cubit.dart';
 
 class WidgetSuggestion extends StatelessWidget {
-  const WidgetSuggestion({super.key});
+  final List<String> suggestion;
+
+  const WidgetSuggestion({super.key, required this.suggestion});
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
+    return ListView.builder(
       padding: EdgeInsets.zero,
-      children: [
-        ListTile(title: Text('Drone Official')),
+      itemCount: suggestion.length,
+      itemBuilder: (context, index) {
+        final keyword = suggestion[index];
 
-        ListTile(title: Text('Radio Murah')),
+        return ListTile(
+          title: Text(keyword),
+          onTap: () {
+            context.read<SearchCubit>().selectKeyword(keyword);
 
-        ListTile(title: Text('Wearable Baru')),
-      ],
+            context.pushNamed(
+              'browse_result',
+              queryParameters: {'keyword': keyword},
+            );
+          },
+        );
+      },
     );
   }
 }

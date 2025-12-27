@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:suaka_niaga/app/utils/config/app_env.dart';
 import 'package:suaka_niaga/app/utils/config/env_dev.dart';
@@ -10,6 +11,10 @@ extension NetworkDependency on GetIt {
   void registerNetwork() {
     // ENVIRONMENT
     registerLazySingleton<AppEnv>(() => DevEnvironment());
+
+    registerLazySingletonAsync<SharedPreferences>(() {
+      return SharedPreferences.getInstance();
+    });
 
     registerLazySingleton<Dio>(() {
       return Dio(
